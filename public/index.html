@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>顺天 · 东方时间智能 · 体验版</title>
+  <meta name="description" content="基于传统东方时间智慧的个人时间洞察 · 测试体验版">
+
+  <!-- LIORIN 视觉规范:思源宋体 + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       LIORIN 设计 Token · 基于 TONGSHU 设计规范
+       ============================================================ */
+    :root {
+      --color-bg: #F5F0E6;          /* Warm Ivory */
+      --color-ink: #0A0A0A;          /* Ink / Deep Charcoal */
+      --color-secondary: #8B6F47;    /* Muted Earth */
+      --color-accent: #C9A961;       /* Warm Gold */
+      --color-vermilion: #C84B31;    /* 朱红 - 仅用于强调 */
+
+      --font-serif: 'Noto Serif SC', 'Source Han Serif SC', serif;
+      --font-sans: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+
+      --radius-card: 16px;
+      --radius-button: 8px;
+      --radius-pill: 999px;
+
+      --shadow-soft: 0 2px 16px rgba(10,10,10,0.06);
+      --shadow-hover: 0 4px 24px rgba(10,10,10,0.10);
+
+      --container: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-ink);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-top: 44px; /* 演示横幅高度 */
+    }
+
+    nav {
+      top: 44px; /* 让位给演示横幅 */
+    }
+
+    /* ============================================================
+       Navbar
+       ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(245, 240, 230, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 100;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(139, 111, 71, 0.08);
+    }
+
+    .nav-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--color-ink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--color-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--color-ink); }
+
+    .nav-cta {
+      background: var(--color-ink);
+      color: var(--color-bg);
+      padding: 8px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .nav-cta:hover { background: var(--color-accent); color: var(--color-ink); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ============================================================
+       Hero
+       ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201, 169, 97, 0.15) 0%, transparent 70%);
+      animation: breathe 6s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+      50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+    }
+
+    .hero-tag {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      letter-spacing: 8px;
+      color: var(--color-secondary);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 500;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      color: var(--color-ink);
+      letter-spacing: 4px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--color-secondary);
+      margin-bottom: 48px;
+      max-width: 600px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--color-ink);
+      color: var(--color-bg);
+      padding: 16px 36px;
+      border-radius: var(--radius-pill);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+
+    .btn-primary:hover { background: var(--color-accent); color: var(--color-ink); transform: translateY(-2px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-ink);
+      padding: 16px 36px;
+      border-radius: var(--radius-pill);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1.5px solid var(--color-ink);
+      transition: all 0.3s;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+
+    .btn-secondary:hover { background: var(--color-ink); color: var(--color-bg); }
+
+    /* ============================================================
+       Section Common
+       ============================================================ */
+    section {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 100px 24px;
+    }
+
+    .section-tag {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 6px;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 500;
+      margin-bottom: 24px;
+      letter-spacing: 2px;
+    }
+
+    .section-desc {
+      color: var(--color-secondary);
+      font-size: 17px;
+      max-width: 700px;
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       三栏价值
+       ============================================================ */
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 64px;
+    }
+
+    @media (max-width: 768px) {
+      .three-col { grid-template-columns: 1fr; }
+    }
+
+    .value-card {
+      padding: 40px 32px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: var(--radius-card);
+      border: 1px solid rgba(139, 111, 71, 0.1);
+      transition: all 0.4s;
+    }
+
+    .value-card:hover {
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+
+    .value-card .num {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+    }
+
+    .value-card h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .value-card p { color: var(--color-secondary); font-size: 15px; }
+
+    /* ============================================================
+       八字体验表单
+       ============================================================ */
+    .bazi-section {
+      background: linear-gradient(180deg, transparent 0%, rgba(201, 169, 97, 0.06) 100%);
+    }
+
+    .bazi-form {
+      max-width: 700px;
+      margin: 64px auto 0;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 48px;
+      border-radius: var(--radius-card);
+      border: 1px solid rgba(139, 111, 71, 0.12);
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (max-width: 768px) {
+      .bazi-form { padding: 32px 24px; }
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+
+    .form-field { display: flex; flex-direction: column; }
+
+    .form-field.full { grid-column: 1 / -1; }
+
+    .form-field label {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      color: var(--color-secondary);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .form-field input,
+    .form-field select {
+      padding: 12px 16px;
+      border: 1px solid rgba(139, 111, 71, 0.25);
+      border-radius: var(--radius-button);
+      background: rgba(245, 240, 230, 0.5);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      color: var(--color-ink);
+      transition: all 0.3s;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--color-ink);
+      color: var(--color-bg);
+      border: none;
+      border-radius: var(--radius-button);
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: var(--font-sans);
+    }
+
+    .form-submit:hover { background: var(--color-accent); color: var(--color-ink); }
+    .form-submit:disabled { opacity: 0.6; cursor: wait; }
+
+    /* ============================================================
+       八字结果
+       ============================================================ */
+    .bazi-result {
+      max-width: 900px;
+      margin: 64px auto 0;
+      display: none;
+    }
+
+    .bazi-result.active { display: block; animation: fadeIn 0.8s ease; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 600px) {
+      .pillars { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .pillar {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 24px 16px;
+      border-radius: var(--radius-card);
+      text-align: center;
+      border-top: 3px solid var(--color-accent);
+    }
+
+    .pillar-label {
+      font-family: var(--font-serif);
+      font-size: 12px;
+      letter-spacing: 4px;
+      color: var(--color-secondary);
+      margin-bottom: 12px;
+    }
+
+    .pillar-chars {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      color: var(--color-ink);
+      line-height: 1.2;
+    }
+
+    .insight-card {
+      background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(45,45,45,0.95) 100%);
+      color: var(--color-bg);
+      padding: 48px;
+      border-radius: var(--radius-card);
+      margin-top: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .insight-card::before {
+      content: "";
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(201,169,97,0.2) 0%, transparent 70%);
+    }
+
+    .insight-label {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+    }
+
+    .insight-text {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .elements-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .element {
+      padding: 16px 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-button);
+      text-align: center;
+    }
+
+    .element-name {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--color-accent);
+      margin-bottom: 4px;
+    }
+
+    .element-count { font-size: 22px; }
+
+    /* ============================================================
+       Footer
+       ============================================================ */
+    footer {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 60px 24px 30px;
+      border-top: 1px solid rgba(139, 111, 71, 0.15);
+      text-align: center;
+    }
+
+    .footer-tag {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: var(--color-secondary);
+      margin-bottom: 16px;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: var(--color-secondary);
+      line-height: 1.8;
+    }
+
+    /* ============================================================
+       Loading
+       ============================================================ */
+    .spinner {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid var(--color-bg);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Disclaimer */
+    .disclaimer {
+      font-size: 12px;
+      color: var(--color-secondary);
+      text-align: center;
+      margin-top: 16px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 演示模式横幅(静态托管版自动出现) -->
+  <div id="demo-banner" style="display:block;background:#C9A961;color:#0A0A0A;padding:10px 20px;text-align:center;font-size:13px;font-weight:600;letter-spacing:0.5px;font-family:'Inter','Noto Serif SC',sans-serif;">
+    ⚡ 静态演示版 · 计算引擎未连接 · 当前展示示例数据 · 完整版即将上线
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">顺天 · TONGSHU</div>
+      <div class="nav-links">
+        <a href="#hero">了解</a>
+        <a href="#bazi">体验</a>
+        <a href="#how">原理</a>
+        <a href="#philosophy">理念</a>
+        <a href="#bazi" class="nav-cta">开始</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-tag">EASTERN TIME INTELLIGENCE</div>
+    <h1 class="hero-title">理解你的时间<br>活出你的意图</h1>
+    <p class="hero-subtitle">基于传统东方时间智慧的个人洞察 · 测试体验版</p>
+    <div class="hero-ctas">
+      <a href="#bazi" class="btn-primary">发现你的路径</a>
+      <a href="#how" class="btn-secondary">了解原理</a>
+    </div>
+  </section>
+
+  <!-- 价值三栏 -->
+  <section id="philosophy">
+    <div class="section-tag">PHILOSOPHY</div>
+    <h2 class="section-title">理解你的时间的<br>另一种方式</h2>
+    <p class="section-desc">不是预测,不是迷信。<br>是基于传统时间体系的<strong>自我认知工具</strong>。</p>
+
+    <div class="three-col">
+      <div class="value-card">
+        <div class="num">知</div>
+        <h3>KNOW</h3>
+        <p>理解你的个人时间模式,认识自我禀赋与节奏。</p>
+      </div>
+      <div class="value-card">
+        <div class="num">察</div>
+        <h3>NOTICE</h3>
+        <p>察觉当下的周期节律,识别环境与时机的影响。</p>
+      </div>
+      <div class="value-card">
+        <div class="num">行</div>
+        <h3>ACT</h3>
+        <p>将洞察转化为日常行动,做出更明智的选择。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八字体验 -->
+  <section id="bazi" class="bazi-section">
+    <div class="section-tag">EXPERIENCE</div>
+    <h2 class="section-title">体验你的时间地图</h2>
+    <p class="section-desc">输入出生信息,生成基于传统计算方法的个人洞察。<br>本测试版本仅供参考与文化体验。</p>
+
+    <form class="bazi-form" id="baziForm">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="name">称呼(可选)</label>
+          <input type="text" id="name" name="name" placeholder="匿名">
+        </div>
+        <div class="form-field">
+          <label for="gender">性别</label>
+          <select id="gender" name="gender">
+            <option value="male">男</option>
+            <option value="female">女</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="birth_date">出生日期</label>
+          <input type="date" id="birth_date" name="birth_date" required value="1990-01-01">
+        </div>
+        <div class="form-field">
+          <label for="birth_time">出生时间</label>
+          <input type="time" id="birth_time" name="birth_time" required value="12:00">
+        </div>
+        <div class="form-field full">
+          <label for="birth_place">出生地点(可选)</label>
+          <input type="text" id="birth_place" name="birth_place" placeholder="如:北京">
+        </div>
+      </div>
+      <button type="submit" class="form-submit" id="submitBtn">生成我的时间地图</button>
+      <p class="disclaimer">* 本工具基于传统时间体系,所生成内容仅供文化体验与自我参考,不构成任何决策建议。</p>
+    </form>
+
+    <!-- 结果区 -->
+    <div class="bazi-result" id="baziResult">
+      <h3 class="section-title" style="margin-top: 64px; text-align: center;" id="resultName"></h3>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-label">年柱</div>
+          <div class="pillar-chars" id="yearPillar"></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-label">月柱</div>
+          <div class="pillar-chars" id="monthPillar"></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-label">日柱</div>
+          <div class="pillar-chars" id="dayPillar"></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-label">时柱</div>
+          <div class="pillar-chars" id="hourPillar"></div>
+        </div>
+      </div>
+
+      <div class="elements-grid" id="elementsGrid"></div>
+
+      <div class="insight-card">
+        <div class="insight-label">PERSONAL INSIGHT</div>
+        <p class="insight-text" id="insightText"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 原理 -->
+  <section id="how">
+    <div class="section-tag">HOW IT WORKS</div>
+    <h2 class="section-title">基于结构化<br>传统知识</h2>
+
+    <div class="three-col">
+      <div class="value-card">
+        <div class="num">01</div>
+        <h3>你的时间</h3>
+        <p>基于真太阳时与公历转换,精确到分钟。</p>
+      </div>
+      <div class="value-card">
+        <div class="num">02</div>
+        <h3>传统知识</h3>
+        <p>《子平真诠》《滴天髓》《穷通宝鉴》《三命通会》《渊海子平》五部经典支撑。</p>
+      </div>
+      <div class="value-card">
+        <div class="num">03</div>
+        <h3>现代解读</h3>
+        <p>确定性计算 + 结构化判断 + 现代语言映射,生成可读洞察。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-tag">TONGSHU · 顺天</div>
+    <p class="footer-text">
+      东方时间智能品牌 · 测试体验版<br>
+      本工具仅供文化体验,所有内容不构成任何决策建议。<br>
+      © 2026 TONGSHU · 测试版本 v0.1
+    </p>
+  </footer>
+
+  <script>
+    // ============================================================
+    // 八字表单提交
+    // ============================================================
+    // 检测是否在后端可达环境(localhost/glitch/me/vercel 等)
+    const IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const IS_GLITCH = window.location.hostname.endsWith('.glitch.me');
+    const HAS_BACKEND = IS_LOCAL || IS_GLITCH ||
+                        window.location.hostname.endsWith('.onrender.com') ||
+                        window.location.hostname.endsWith('.fly.dev');
+    const API_BASE = IS_LOCAL ? 'http://localhost:8888'
+      : IS_GLITCH ? window.location.origin
+      : window.location.origin;
+
+    document.getElementById('baziForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const form = e.target;
+
+      const data = {
+        name: form.name.value || '匿名',
+        birth_date: form.birth_date.value,
+        birth_time: form.birth_time.value,
+        birth_place: form.birth_place.value || '北京',
+        gender: form.gender.value
+      };
+
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span>正在计算...';
+
+      try {
+        const resp = await fetch(API_BASE + '/api/bazi', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (!resp.ok) throw new Error('API error');
+
+        const result = await resp.json();
+
+        document.getElementById('resultName').textContent = result.name + ' 的时间地图';
+        document.getElementById('yearPillar').textContent = result.year_pillar;
+        document.getElementById('monthPillar').textContent = result.month_pillar;
+        document.getElementById('dayPillar').textContent = result.day_pillar;
+        document.getElementById('hourPillar').textContent = result.hour_pillar;
+        document.getElementById('insightText').textContent = result.insight;
+
+        // 五行图
+        const eg = document.getElementById('elementsGrid');
+        eg.innerHTML = '';
+        for (const [k, v] of Object.entries(result.five_elements)) {
+          eg.innerHTML += `<div class="element">
+            <div class="element-name">${k}</div>
+            <div class="element-count">${v}</div>
+          </div>`;
+        }
+
+        const resultEl = document.getElementById('baziResult');
+        resultEl.classList.add('active');
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      } catch (err) {
+        // 静态部署(Gitee/Surge 等无后端)→ 降级到内置 demo 数据
+        if (!HAS_BACKEND) {
+          const demo = {
+            name: data.name,
+            year_pillar: '辛丑',
+            month_pillar: '丁酉',
+            day_pillar: '癸亥',
+            hour_pillar: '丙辰',
+            insight: '【演示模式·静态托管版】您的八字如同一张时间印章——辛金为镜,丁火为灯,癸水为墨,丙火为笔。命盘金旺而水清,秋生之人,内敛而深邃。此刻静态版本未连接后端,展示的是内置示例(刘德华先生,1961·示例)。完整版将根据您的出生时刻精算,呈现五行平衡图、十神关系与流年运势。',
+            five_elements: { '金': 3, '木': 1, '水': 2, '火': 2, '土': 1 }
+          };
+          document.getElementById('resultName').textContent = demo.name + ' 的时间地图';
+          document.getElementById('yearPillar').textContent = demo.year_pillar;
+          document.getElementById('monthPillar').textContent = demo.month_pillar;
+          document.getElementById('dayPillar').textContent = demo.day_pillar;
+          document.getElementById('hourPillar').textContent = demo.hour_pillar;
+          document.getElementById('insightText').textContent = demo.insight;
+          const eg = document.getElementById('elementsGrid');
+          eg.innerHTML = '';
+          for (const [k, v] of Object.entries(demo.five_elements)) {
+            eg.innerHTML += `<div class="element"><div class="element-name">${k}</div><div class="element-count">${v}</div></div>`;
+          }
+          const resultEl = document.getElementById('baziResult');
+          resultEl.classList.add('active');
+          resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          alert('计算失败:请确认后端服务运行中。错误:' + err.message);
+        }
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '生成我的时间地图';
+      }
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
