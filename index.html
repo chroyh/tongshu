@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>顺天 · 东方时间智能 · 体验版 v2</title>
+  <title>东方时间智能 · 体验版 v2</title>
   <meta name="description" content="基于传统东方时间智慧的个人时间洞察 · 五部经典支撑 · 测试体验版">
 
   <!-- LIORIN 视觉规范:思源宋体 + Inter -->
@@ -13,7 +13,7 @@
 
   <style>
     /* ============================================================
-       LIORIN 设计 Token · 基于 TONGSHU 设计规范
+       LIORIN 设计 Token · 基于东方时间智能设计规范
        ============================================================ */
     :root {
       --color-bg: #F5F0E6;          /* Warm Ivory */
@@ -758,7 +758,7 @@
   <!-- Navbar -->
   <nav>
     <div class="nav-inner">
-      <div class="logo">顺天 · TONGSHU</div>
+      <div class="logo">东方时间智能</div>
       <div class="nav-links">
         <a href="#hero">了解</a>
         <a href="#bazi">体验</a>
@@ -973,7 +973,7 @@
     <div class="section-tag">CLASSICAL SOURCES</div>
     <h2 class="section-title">五部经典<br>9,709 条断语</h2>
     <p class="section-desc">
-      全部来自公开开源项目 ZQMMING/wisdom(顺天/EXIS)的语料库。<br>
+      全部来自公开开源项目 ZQMMING/wisdom 的语料库。<br>
       本测试版展示部分名段。完整断语匹配在完整版中提供。
     </p>
 
@@ -1022,7 +1022,7 @@
     <!-- Authority Ledger 表格(借鉴 wisdom Runtime Authority Ledger) -->
     <div class="ledger-wrap">
       <div class="ledger-head">
-        <h4>CA / TONGSHU · RUNTIME AUTHORITY LEDGER</h4>
+        <h4>CA · RUNTIME AUTHORITY LEDGER</h4>
         <span class="ledger-meta">v2 · 2026-09-20 · owner: hermes</span>
       </div>
       <table class="ledger-table">
@@ -1038,31 +1038,31 @@
           <tr>
             <td class="cap">bazi.compute</td>
             <td class="status-AUTHORITY">AUTHORITY</td>
-            <td>tongshu.engines.bazi_engine</td>
+            <td>ca.engines.bazi_engine</td>
             <td>BaziAdapter · Pillar</td>
           </tr>
           <tr>
             <td class="cap">bazi.signal_build</td>
             <td class="status-AUTHORITY">AUTHORITY</td>
-            <td>tongshu.reasoning.signal_engine</td>
+            <td>ca.reasoning.signal_engine</td>
             <td>5-elements · 12-growth</td>
           </tr>
           <tr>
             <td class="cap">l1_facts.hidden_stems</td>
             <td class="status-AUTHORITY">AUTHORITY</td>
-            <td>tongshu.engines.bazi_l1_facts</td>
+            <td>ca.engines.bazi_l1_facts</td>
             <td>BRANCH_HIDDEN_STEMS</td>
           </tr>
           <tr>
             <td class="cap">l1_facts.growth</td>
             <td class="status-AUTHORITY">AUTHORITY</td>
-            <td>tongshu.engines.bazi_l1_facts</td>
+            <td>ca.engines.bazi_l1_facts</td>
             <td>TIAN_GAN_TWELVE_GROWTH</td>
           </tr>
           <tr>
             <td class="cap">classical_evidence.match</td>
             <td class="status-FALLBACK">FALLBACK</td>
-            <td>tongshu.assertion_v2.contract</td>
+            <td>ca.assertion_v2.contract</td>
             <td>9,709 duanyu</td>
           </tr>
           <tr>
@@ -1084,12 +1084,12 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-tag">TONGSHU · 顺天</div>
+    <div class="footer-tag">东方时间智能</div>
     <p class="footer-text">
       东方时间智能品牌 · 测试体验版 v2<br>
       核心架构借鉴 ZQMMING/wisdom(同源 · MIT-like 开放协作)<br>
       本工具仅供文化体验,所有内容不构成任何决策建议。<br>
-      © 2026 TONGSHU · 测试版本
+      © 2026 东方时间智能 · 测试版本
     </p>
   </footer>
 
@@ -1097,7 +1097,7 @@
     // ============================================================
     // ★ 客户端八字计算引擎 v2
     // 借鉴 wisdom BaziEngine + bazi_l1_facts · 纯 JS 实现
-    // 移植自 src/tongshu/engines/bazi_engine.py 86KB
+    // 移植自 ZQMMING/wisdom 引擎 · 86KB
     // ============================================================
 
     const HEAVENLY_STEMS = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
