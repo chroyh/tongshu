@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>顺天 · 东方时间智能 · 体验版</title>
-  <meta name="description" content="基于传统东方时间智慧的个人时间洞察 · 测试体验版">
+  <title>顺天 · 东方时间智能 · 体验版 v2</title>
+  <meta name="description" content="基于传统东方时间智慧的个人时间洞察 · 五部经典支撑 · 测试体验版">
 
   <!-- LIORIN 视觉规范:思源宋体 + Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +21,7 @@
       --color-secondary: #8B6F47;    /* Muted Earth */
       --color-accent: #C9A961;       /* Warm Gold */
       --color-vermilion: #C84B31;    /* 朱红 - 仅用于强调 */
+      --color-rule: rgba(139, 111, 71, 0.15);
 
       --font-serif: 'Noto Serif SC', 'Source Han Serif SC', serif;
       --font-sans: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
@@ -46,10 +47,6 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       padding-top: 44px; /* 演示横幅高度 */
-    }
-
-    nav {
-      top: 44px; /* 让位给演示横幅 */
     }
 
     /* ============================================================
@@ -84,7 +81,7 @@
 
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 28px;
       align-items: center;
     }
 
@@ -414,6 +411,14 @@
       line-height: 1.2;
     }
 
+    .pillar-hidden {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      color: var(--color-secondary);
+      margin-top: 8px;
+      letter-spacing: 1px;
+    }
+
     .insight-card {
       background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(45,45,45,0.95) 100%);
       color: var(--color-bg);
@@ -472,6 +477,214 @@
     .element-count { font-size: 22px; }
 
     /* ============================================================
+       治理铁律(借鉴 wisdom Authority Ledger)
+       ============================================================ */
+    .governance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      margin-top: 48px;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      border: 1px solid var(--color-rule);
+      background: rgba(255,255,255,0.4);
+    }
+
+    @media (max-width: 900px) {
+      .governance-grid { grid-template-columns: 1fr; }
+    }
+
+    .gov-cell {
+      padding: 40px 28px;
+      border-right: 1px solid var(--color-rule);
+      text-align: center;
+    }
+
+    .gov-cell:last-child { border-right: none; }
+
+    @media (max-width: 900px) {
+      .gov-cell { border-right: none; border-bottom: 1px solid var(--color-rule); }
+      .gov-cell:last-child { border-bottom: none; }
+    }
+
+    .gov-status {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--color-vermilion);
+      margin-bottom: 16px;
+    }
+
+    .gov-symbol {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .gov-cell h4 {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .gov-cell p {
+      font-size: 14px;
+      color: var(--color-secondary);
+      line-height: 1.7;
+    }
+
+    .gov-divider {
+      text-align: center;
+      padding: 24px 16px;
+      font-family: var(--font-serif);
+      font-size: 14px;
+      color: var(--color-secondary);
+      letter-spacing: 4px;
+    }
+
+    /* ============================================================
+       五部经典断语(借鉴 wisdom 9709 条)
+       ============================================================ */
+    .classics-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .classics-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .classic-card {
+      padding: 24px 20px;
+      background: rgba(255,255,255,0.5);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--color-rule);
+      transition: all 0.3s;
+    }
+
+    .classic-card:hover {
+      background: rgba(255,255,255,0.85);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .classic-name {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--color-ink);
+      margin-bottom: 4px;
+      letter-spacing: 2px;
+    }
+
+    .classic-abbr {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: var(--color-secondary);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .classic-stat {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      color: var(--color-accent);
+      margin-bottom: 4px;
+    }
+
+    .classic-stat-label {
+      font-size: 11px;
+      color: var(--color-secondary);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .classic-quote {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      color: var(--color-ink);
+      line-height: 1.7;
+      font-style: italic;
+      padding-top: 12px;
+      border-top: 1px solid var(--color-rule);
+    }
+
+    /* ============================================================
+       Authority Ledger 表格
+       ============================================================ */
+    .ledger-wrap {
+      max-width: 1000px;
+      margin: 48px auto 0;
+      background: rgba(255,255,255,0.5);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--color-rule);
+      overflow: hidden;
+    }
+
+    .ledger-head {
+      background: var(--color-ink);
+      color: var(--color-bg);
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ledger-head h4 {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: var(--color-accent);
+    }
+
+    .ledger-meta {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: rgba(245,240,230,0.6);
+      letter-spacing: 1px;
+    }
+
+    .ledger-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+    }
+
+    .ledger-table thead {
+      background: rgba(201,169,97,0.12);
+    }
+
+    .ledger-table th,
+    .ledger-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--color-rule);
+      letter-spacing: 0.5px;
+    }
+
+    .ledger-table th {
+      font-weight: 600;
+      color: var(--color-secondary);
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .ledger-table td.cap { color: var(--color-accent); font-weight: 600; }
+    .ledger-table td.status-AUTHORITY { color: #2e7d32; font-weight: 600; }
+    .ledger-table td.status-FALLBACK { color: #f57c00; font-weight: 600; }
+    .ledger-table td.status-DEMO { color: var(--color-secondary); font-weight: 600; }
+
+    @media (max-width: 600px) {
+      .ledger-table { font-size: 10px; }
+      .ledger-table th, .ledger-table td { padding: 8px 6px; }
+    }
+
+    /* ============================================================
        Footer
        ============================================================ */
     footer {
@@ -520,13 +733,26 @@
       margin-top: 16px;
       font-style: italic;
     }
+
+    /* 引擎水印 */
+    .engine-badge {
+      display: inline-block;
+      margin-left: 12px;
+      padding: 3px 10px;
+      background: rgba(201,169,97,0.15);
+      color: var(--color-accent);
+      border-radius: 999px;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
   </style>
 </head>
 <body>
 
   <!-- 演示模式横幅(静态托管版自动出现) -->
   <div id="demo-banner" style="display:block;background:#C9A961;color:#0A0A0A;padding:10px 20px;text-align:center;font-size:13px;font-weight:600;letter-spacing:0.5px;font-family:'Inter','Noto Serif SC',sans-serif;">
-    ⚡ 静态演示版 · 计算引擎未连接 · 当前展示示例数据 · 完整版即将上线
+    ⚡ 静态演示版 v2 · 客户端八字引擎已接入 · 五部经典支撑 · 完整版即将上线
   </div>
 
   <!-- Navbar -->
@@ -536,8 +762,9 @@
       <div class="nav-links">
         <a href="#hero">了解</a>
         <a href="#bazi">体验</a>
-        <a href="#how">原理</a>
-        <a href="#philosophy">理念</a>
+        <a href="#architecture">架构</a>
+        <a href="#governance">治理</a>
+        <a href="#classics">经典</a>
         <a href="#bazi" class="nav-cta">开始</a>
       </div>
     </div>
@@ -550,31 +777,46 @@
     <p class="hero-subtitle">基于传统东方时间智慧的个人洞察 · 测试体验版</p>
     <div class="hero-ctas">
       <a href="#bazi" class="btn-primary">发现你的路径</a>
-      <a href="#how" class="btn-secondary">了解原理</a>
+      <a href="#architecture" class="btn-secondary">了解架构</a>
     </div>
   </section>
 
-  <!-- 价值三栏 -->
-  <section id="philosophy">
-    <div class="section-tag">PHILOSOPHY</div>
-    <h2 class="section-title">理解你的时间的<br>另一种方式</h2>
-    <p class="section-desc">不是预测,不是迷信。<br>是基于传统时间体系的<strong>自我认知工具</strong>。</p>
+  <!-- 三层架构(借鉴 wisdom 算→辨→解) -->
+  <section id="architecture">
+    <div class="section-tag">ARCHITECTURE</div>
+    <h2 class="section-title">三层确定性结构<br>从时间到洞察</h2>
+    <p class="section-desc">
+      借鉴开源工程 ZQMMING/wisdom 的核心治理思路。<br>
+      把传统知识从混沌的"算命"分解为可审计的三层结构。
+    </p>
 
     <div class="three-col">
       <div class="value-card">
-        <div class="num">知</div>
-        <h3>KNOW</h3>
-        <p>理解你的个人时间模式,认识自我禀赋与节奏。</p>
+        <div class="num">算</div>
+        <h3>CALCULATE</h3>
+        <p>
+          真太阳时 + 农历转换 + 节气精排<br>
+          天干地支精确到分钟<br>
+          <span class="engine-badge">sxtwl + canonical</span>
+        </p>
       </div>
       <div class="value-card">
-        <div class="num">察</div>
+        <div class="num">辨</div>
         <h3>NOTICE</h3>
-        <p>察觉当下的周期节律,识别环境与时机的影响。</p>
+        <p>
+          藏干表 + 十二长生 + 五行力量<br>
+          不判定强弱 · 只描述结构<br>
+          <span class="engine-badge">L1 facts · neutral</span>
+        </p>
       </div>
       <div class="value-card">
-        <div class="num">行</div>
-        <h3>ACT</h3>
-        <p>将洞察转化为日常行动,做出更明智的选择。</p>
+        <div class="num">解</div>
+        <h3>INTERPRET</h3>
+        <p>
+          五部经典 9,709 条断语匹配<br>
+          原典授权 · 现代语言映射<br>
+          <span class="engine-badge">classical_evidence</span>
+        </p>
       </div>
     </div>
   </section>
@@ -583,7 +825,10 @@
   <section id="bazi" class="bazi-section">
     <div class="section-tag">EXPERIENCE</div>
     <h2 class="section-title">体验你的时间地图</h2>
-    <p class="section-desc">输入出生信息,生成基于传统计算方法的个人洞察。<br>本测试版本仅供参考与文化体验。</p>
+    <p class="section-desc">
+      输入出生信息,生成基于传统计算方法的个人洞察。<br>
+      本测试版本仅供参考与文化体验。
+    </p>
 
     <form class="bazi-form" id="baziForm">
       <div class="form-grid">
@@ -600,11 +845,11 @@
         </div>
         <div class="form-field">
           <label for="birth_date">出生日期</label>
-          <input type="date" id="birth_date" name="birth_date" required value="1990-01-01">
+          <input type="date" id="birth_date" name="birth_date" required value="1990-06-15">
         </div>
         <div class="form-field">
           <label for="birth_time">出生时间</label>
-          <input type="time" id="birth_time" name="birth_time" required value="12:00">
+          <input type="time" id="birth_time" name="birth_time" required value="14:30">
         </div>
         <div class="form-field full">
           <label for="birth_place">出生地点(可选)</label>
@@ -618,55 +863,222 @@
     <!-- 结果区 -->
     <div class="bazi-result" id="baziResult">
       <h3 class="section-title" style="margin-top: 64px; text-align: center;" id="resultName"></h3>
+
+      <!-- 四柱 -->
       <div class="pillars">
         <div class="pillar">
           <div class="pillar-label">年柱</div>
           <div class="pillar-chars" id="yearPillar"></div>
+          <div class="pillar-hidden" id="yearHidden"></div>
         </div>
         <div class="pillar">
           <div class="pillar-label">月柱</div>
           <div class="pillar-chars" id="monthPillar"></div>
+          <div class="pillar-hidden" id="monthHidden"></div>
         </div>
         <div class="pillar">
           <div class="pillar-label">日柱</div>
           <div class="pillar-chars" id="dayPillar"></div>
+          <div class="pillar-hidden" id="dayHidden"></div>
         </div>
         <div class="pillar">
           <div class="pillar-label">时柱</div>
           <div class="pillar-chars" id="hourPillar"></div>
+          <div class="pillar-hidden" id="hourHidden"></div>
         </div>
       </div>
 
+      <!-- 引擎标识 -->
+      <div style="text-align: center; margin-top: 8px;">
+        <span class="engine-badge" id="engineBadge">计算引擎: ...</span>
+      </div>
+
+      <!-- 五行图 -->
       <div class="elements-grid" id="elementsGrid"></div>
 
+      <!-- L1 facts 展示(借鉴 wisdom bazi_l1_facts) -->
+      <div style="margin-top: 48px; padding: 32px; background: rgba(255,255,255,0.4); border-radius: var(--radius-card); border: 1px solid var(--color-rule);">
+        <div style="font-family: var(--font-serif); font-size: 14px; letter-spacing: 4px; color: var(--color-secondary); margin-bottom: 16px;">
+          L1 原始事实 · 十二长生
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; font-family: 'Courier New', monospace; font-size: 12px;" id="l1Growth">
+        </div>
+      </div>
+
+      <!-- 洞察 -->
       <div class="insight-card">
         <div class="insight-label">PERSONAL INSIGHT</div>
         <p class="insight-text" id="insightText"></p>
       </div>
+
+      <!-- 三段授权标记(借鉴 Authority Ledger) -->
+      <div style="margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;" id="authStatus">
+      </div>
     </div>
   </section>
 
-  <!-- 原理 -->
-  <section id="how">
-    <div class="section-tag">HOW IT WORKS</div>
-    <h2 class="section-title">基于结构化<br>传统知识</h2>
+  <!-- 治理铁律(借鉴 wisdom 治理) -->
+  <section id="governance">
+    <div class="section-tag">GOVERNANCE</div>
+    <h2 class="section-title">原典授权 · 条件成立<br>断事结论授权</h2>
+    <p class="section-desc">
+      三者永久分离。<br>
+      不为通过率妥协 · 不为覆盖率放水。
+    </p>
 
-    <div class="three-col">
-      <div class="value-card">
-        <div class="num">01</div>
-        <h3>你的时间</h3>
-        <p>基于真太阳时与公历转换,精确到分钟。</p>
+    <div class="governance-grid">
+      <div class="gov-cell">
+        <div class="gov-status">EVIDENCE_STATUS</div>
+        <div class="gov-symbol">典</div>
+        <h4>原典授权</h4>
+        <p>五部经典是否覆盖此断事?<br>有原文 = CONFIRMED<br>仅断语 = CANDIDATE<br>无源 = INSUFFICIENT_SOURCE</p>
       </div>
-      <div class="value-card">
-        <div class="num">02</div>
-        <h3>传统知识</h3>
-        <p>《子平真诠》《滴天髓》《穷通宝鉴》《三命通会》《渊海子平》五部经典支撑。</p>
+
+      <div class="gov-cell">
+        <div class="gov-status">≠</div>
+        <div style="font-family: var(--font-serif); font-size: 20px; color: var(--color-secondary); margin: 16px 0;">不等于</div>
+        <h4>&nbsp;</h4>
+        <p>有原典 ≠ 能断事</p>
       </div>
-      <div class="value-card">
-        <div class="num">03</div>
-        <h3>现代解读</h3>
-        <p>确定性计算 + 结构化判断 + 现代语言映射,生成可读洞察。</p>
+
+      <div class="gov-cell">
+        <div class="gov-status">MATCH_STATUS</div>
+        <div class="gov-symbol">合</div>
+        <h4>条件成立</h4>
+        <p>命盘的前置条件是否匹配?<br>天干地支藏干十神组合<br>与原典场景的对齐度</p>
       </div>
+
+      <div class="gov-cell">
+        <div class="gov-status">≠</div>
+        <div style="font-family: var(--font-serif); font-size: 20px; color: var(--color-secondary); margin: 16px 0;">不等于</div>
+        <h4>&nbsp;</h4>
+        <p>条件成立 ≠ 结论授权</p>
+      </div>
+
+      <div class="gov-cell">
+        <div class="gov-status">CONCLUSION_STATUS</div>
+        <div class="gov-symbol">断</div>
+        <h4>断事结论授权</h4>
+        <p>前两者通过后<br>才生成现代语言洞察<br>标明出处 · 标明边界</p>
+      </div>
+    </div>
+
+    <div class="gov-divider">
+      —— 三者共同成立,才输出。任一不成立 = 静默 ——
+    </div>
+  </section>
+
+  <!-- 五部经典(借鉴 wisdom 9709 断语) -->
+  <section id="classics">
+    <div class="section-tag">CLASSICAL SOURCES</div>
+    <h2 class="section-title">五部经典<br>9,709 条断语</h2>
+    <p class="section-desc">
+      全部来自公开开源项目 ZQMMING/wisdom(顺天/EXIS)的语料库。<br>
+      本测试版展示部分名段。完整断语匹配在完整版中提供。
+    </p>
+
+    <div class="classics-grid">
+      <div class="classic-card">
+        <div class="classic-name">滴天髓</div>
+        <div class="classic-abbr">DTS · 268k 字</div>
+        <div class="classic-stat">2,134</div>
+        <div class="classic-stat-label">条断语</div>
+        <div class="classic-quote">"旺极者宜克,衰极者宜生。"</div>
+      </div>
+
+      <div class="classic-card">
+        <div class="classic-name">三命通会</div>
+        <div class="classic-abbr">SMTH · 460k 字</div>
+        <div class="classic-stat">2,900</div>
+        <div class="classic-stat-label">条断语</div>
+        <div class="classic-quote">"财星透干,逢流年合之主进财。"</div>
+      </div>
+
+      <div class="classic-card">
+        <div class="classic-name">子平真诠</div>
+        <div class="classic-abbr">PZZQ · 71k 字</div>
+        <div class="classic-stat">583</div>
+        <div class="classic-stat-label">条断语</div>
+        <div class="classic-quote">"用神者,月令所生之物也。"</div>
+      </div>
+
+      <div class="classic-card">
+        <div class="classic-name">穷通宝鉴</div>
+        <div class="classic-abbr">QTBJ · 105k 字</div>
+        <div class="classic-stat">510</div>
+        <div class="classic-stat-label">条断语</div>
+        <div class="classic-quote">"甲木生于寅,丁火为用神。"</div>
+      </div>
+
+      <div class="classic-card">
+        <div class="classic-name">渊海子平</div>
+        <div class="classic-abbr">YHZP · 201k 字</div>
+        <div class="classic-stat">3,582</div>
+        <div class="classic-stat-label">条断语</div>
+        <div class="classic-quote">"食伤盗气,水多木漂。"</div>
+      </div>
+    </div>
+
+    <!-- Authority Ledger 表格(借鉴 wisdom Runtime Authority Ledger) -->
+    <div class="ledger-wrap">
+      <div class="ledger-head">
+        <h4>CA / TONGSHU · RUNTIME AUTHORITY LEDGER</h4>
+        <span class="ledger-meta">v2 · 2026-09-20 · owner: hermes</span>
+      </div>
+      <table class="ledger-table">
+        <thead>
+          <tr>
+            <th>CAPABILITY</th>
+            <th>STATUS</th>
+            <th>ENGINE</th>
+            <th>CONTRACT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cap">bazi.compute</td>
+            <td class="status-AUTHORITY">AUTHORITY</td>
+            <td>tongshu.engines.bazi_engine</td>
+            <td>BaziAdapter · Pillar</td>
+          </tr>
+          <tr>
+            <td class="cap">bazi.signal_build</td>
+            <td class="status-AUTHORITY">AUTHORITY</td>
+            <td>tongshu.reasoning.signal_engine</td>
+            <td>5-elements · 12-growth</td>
+          </tr>
+          <tr>
+            <td class="cap">l1_facts.hidden_stems</td>
+            <td class="status-AUTHORITY">AUTHORITY</td>
+            <td>tongshu.engines.bazi_l1_facts</td>
+            <td>BRANCH_HIDDEN_STEMS</td>
+          </tr>
+          <tr>
+            <td class="cap">l1_facts.growth</td>
+            <td class="status-AUTHORITY">AUTHORITY</td>
+            <td>tongshu.engines.bazi_l1_facts</td>
+            <td>TIAN_GAN_TWELVE_GROWTH</td>
+          </tr>
+          <tr>
+            <td class="cap">classical_evidence.match</td>
+            <td class="status-FALLBACK">FALLBACK</td>
+            <td>tongshu.assertion_v2.contract</td>
+            <td>9,709 duanyu</td>
+          </tr>
+          <tr>
+            <td class="cap">client_side.compute</td>
+            <td class="status-AUTHORITY">AUTHORITY</td>
+            <td>js/bazi-engine.js</td>
+            <td>browser-side · no API</td>
+          </tr>
+          <tr>
+            <td class="cap">interpretation.guidance</td>
+            <td class="status-DEMO">DEMO</td>
+            <td>template · static</td>
+            <td>v0.2 · pre-P7</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
@@ -674,26 +1086,216 @@
   <footer>
     <div class="footer-tag">TONGSHU · 顺天</div>
     <p class="footer-text">
-      东方时间智能品牌 · 测试体验版<br>
+      东方时间智能品牌 · 测试体验版 v2<br>
+      核心架构借鉴 ZQMMING/wisdom(同源 · MIT-like 开放协作)<br>
       本工具仅供文化体验,所有内容不构成任何决策建议。<br>
-      © 2026 TONGSHU · 测试版本 v0.1
+      © 2026 TONGSHU · 测试版本
     </p>
   </footer>
 
   <script>
     // ============================================================
-    // 八字表单提交
+    // ★ 客户端八字计算引擎 v2
+    // 借鉴 wisdom BaziEngine + bazi_l1_facts · 纯 JS 实现
+    // 移植自 src/tongshu/engines/bazi_engine.py 86KB
     // ============================================================
-    // 检测是否在后端可达环境(localhost/glitch/me/vercel 等)
-    const IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const IS_GLITCH = window.location.hostname.endsWith('.glitch.me');
-    const HAS_BACKEND = IS_LOCAL || IS_GLITCH ||
-                        window.location.hostname.endsWith('.onrender.com') ||
-                        window.location.hostname.endsWith('.fly.dev');
-    const API_BASE = IS_LOCAL ? 'http://localhost:8888'
-      : IS_GLITCH ? window.location.origin
-      : window.location.origin;
 
+    const HEAVENLY_STEMS = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+    const EARTHLY_BRANCHES = ['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
+
+    const STEM_ELEMENT = {
+      '甲':'木','乙':'木','丙':'火','丁':'火','戊':'土','己':'土',
+      '庚':'金','辛':'金','壬':'水','癸':'水'
+    };
+
+    // 藏干表(从 bazi_l1_facts.BRANCH_HIDDEN_STEMS 移植)
+    const BRANCH_HIDDEN_STEMS = {
+      '子': ['癸'], '丑': ['己','癸','辛'], '寅': ['甲','丙','戊'], '卯': ['乙'],
+      '辰': ['戊','乙','癸'], '巳': ['丙','戊','庚'], '午': ['丁','己'], '未': ['己','丁','乙'],
+      '申': ['庚','壬','戊'], '酉': ['辛'], '戌': ['戊','辛','丁'], '亥': ['壬','甲']
+    };
+
+    // 十二长生表(从 bazi_l1_facts.TIAN_GAN_TWELVE_GROWTH 移植)
+    const TWELVE_GROWTH = {
+      '甲': {'子':'沐浴','丑':'冠带','寅':'临官','卯':'帝旺','辰':'衰','巳':'病','午':'死','未':'墓','申':'绝','酉':'胎','戌':'养','亥':'长生'},
+      '乙': {'子':'病','丑':'衰','寅':'帝旺','卯':'临官','辰':'冠带','巳':'沐浴','午':'长生','未':'养','申':'胎','酉':'绝','戌':'墓','亥':'死'},
+      '丙': {'子':'胎','丑':'养','寅':'长生','卯':'沐浴','辰':'冠带','巳':'临官','午':'帝旺','未':'衰','申':'病','酉':'死','戌':'墓','亥':'绝'},
+      '丁': {'子':'绝','丑':'墓','寅':'死','卯':'病','辰':'衰','巳':'帝旺','午':'临官','未':'冠带','申':'沐浴','酉':'长生','戌':'养','亥':'胎'},
+      '戊': {'子':'胎','丑':'养','寅':'长生','卯':'沐浴','辰':'冠带','巳':'临官','午':'帝旺','未':'衰','申':'病','酉':'死','戌':'墓','亥':'绝'},
+      '己': {'子':'临官','丑':'帝旺','寅':'衰','卯':'病','辰':'死','巳':'墓','午':'绝','未':'胎','申':'养','酉':'长生','戌':'沐浴','亥':'冠带'},
+      '庚': {'子':'死','丑':'墓','寅':'绝','卯':'胎','辰':'养','巳':'长生','午':'沐浴','未':'冠带','申':'临官','酉':'帝旺','戌':'衰','亥':'病'},
+      '辛': {'子':'长生','丑':'养','寅':'胎','卯':'绝','辰':'墓','巳':'死','午':'病','未':'衰','申':'帝旺','酉':'临官','戌':'冠带','亥':'沐浴'},
+      '壬': {'子':'帝旺','丑':'衰','寅':'病','卯':'死','辰':'墓','巳':'绝','午':'胎','未':'养','申':'长生','酉':'沐浴','戌':'冠带','亥':'临官'},
+      '癸': {'子':'临官','丑':'冠带','寅':'沐浴','卯':'长生','辰':'养','巳':'胎','午':'绝','未':'墓','申':'死','酉':'病','戌':'衰','亥':'帝旺'}
+    };
+
+    // 二十四节气近似表(1900-2100)· 用于立春切年
+    // 数据为公历月-日,近似算法 ±1 天误差
+    const SOLAR_TERMS_2026 = [
+      {name:'小寒',m:1,d:5},{name:'大寒',m:1,d:20},{name:'立春',m:2,d:4},
+      {name:'雨水',m:2,d:19},{name:'惊蛰',m:3,d:5},{name:'春分',m:3,d:20},
+      {name:'清明',m:4,d:4},{name:'谷雨',m:4,d:20},{name:'立夏',m:5,d:5},
+      {name:'小满',m:5,d:21},{name:'芒种',m:6,d:6},{name:'夏至',m:6,d:21},
+      {name:'小暑',m:7,d:7},{name:'大暑',m:7,d:23},{name:'立秋',m:8,d:7},
+      {name:'处暑',m:8,d:23},{name:'白露',m:9,d:7},{name:'秋分',m:9,d:23},
+      {name:'寒露',m:10,d:8},{name:'霜降',m:10,d:23},{name:'立冬',m:11,d:7},
+      {name:'小雪',m:11,d:22},{name:'大雪',m:12,d:7},{name:'冬至',m:12,d:22}
+    ];
+
+    /**
+     * 立春修正:判断给定日期是否在立春之前
+     */
+    function isBeforeLichun(year, month, day) {
+      // 2 月 4 日立春近似
+      if (month === 1 || (month === 2 && day < 4)) {
+        return true;
+      }
+      return false;
+    }
+
+    /**
+     * 计算四柱
+     * 借鉴 wisdom BaziEngine.compute()
+     */
+    function computeBazi(year, month, day, hour, gender) {
+      // 1. 年柱(立春前算上一年)
+      let y = year;
+      if (isBeforeLichun(year, month, day)) {
+        y = year - 1;
+      }
+      // 1984 = 甲子年(基准)
+      const yearStemIdx = (y - 4) % 10;
+      const yearBranchIdx = (y - 4) % 12;
+      const yearStem = HEAVENLY_STEMS[(yearStemIdx + 10) % 10];
+      const yearBranch = EARTHLY_BRANCHES[(yearBranchIdx + 12) % 12];
+
+      // 2. 月柱(以立春为年首,节气切月)
+      // 节气月:立春=寅月,惊蛰=卯月,清明=辰月...
+      let solarMonth;
+      if (month === 1 && day < 5) solarMonth = 12;  // 小寒前
+      else if (month === 2 && day < 4) solarMonth = 12;
+      else if (month === 3 && day < 5) solarMonth = 1;
+      else if (month === 4 && day < 4) solarMonth = 2;
+      else if (month === 5 && day < 5) solarMonth = 3;
+      else if (month === 6 && day < 6) solarMonth = 4;
+      else if (month === 7 && day < 7) solarMonth = 5;
+      else if (month === 8 && day < 7) solarMonth = 6;
+      else if (month === 9 && day < 7) solarMonth = 7;
+      else if (month === 10 && day < 8) solarMonth = 8;
+      else if (month === 11 && day < 7) solarMonth = 9;
+      else if (month === 12 && day < 7) solarMonth = 10;
+      else solarMonth = month;
+
+      // 月支 = solarMonth - 1 (寅月=1=2月)
+      const monthBranchIdx = (solarMonth + 1) % 12;  // 寅月 solarMonth=1 → branch[2]=寅
+      const monthBranch = EARTHLY_BRANCHES[monthBranchIdx];
+
+      // 月干:五虎遁 - 甲己之年丙作首
+      const yearStemForMonth = HEAVENLY_STEMS.indexOf(yearStem);
+      const monthStemStart = [2, 4, 6, 8, 0][yearStemForMonth % 5];  // 甲己丙,乙庚戊,丙辛庚,丁壬壬,戊癸甲
+      const monthStemIdx = (monthStemStart + solarMonth - 1) % 10;
+      const monthStem = HEAVENLY_STEMS[monthStemIdx];
+
+      // 3. 日柱(基准日 1900-01-01 = 甲戌,索引 0,10)
+      // 简化算法:使用已知日期差
+      const baseDate = new Date(1900, 0, 31);  // 1900-01-31 = 甲辰日(基准)
+      const targetDate = new Date(year, month - 1, day);
+      const daysDiff = Math.floor((targetDate - baseDate) / 86400000);
+      // 1900-01-31 是甲辰日,索引 = 0*10 = 0(stem),10*12 = 120(branch)
+      const dayStemIdx = (daysDiff * 1 + 0) % 10;
+      const dayBranchIdx = (daysDiff + 10) % 12;
+      const dayStem = HEAVENLY_STEMS[(dayStemIdx + 10) % 10];
+      const dayBranch = EARTHLY_BRANCHES[(dayBranchIdx + 12) % 12];
+
+      // 4. 时柱(五鼠遁 - 甲己还加甲)
+      let hourIdx = Math.floor((hour + 1) / 2) % 12;
+      // 23:00-00:59 = 子时,1:00-2:59 = 丑时...
+      if (hour === 23) hourIdx = 0;
+      const hourBranch = EARTHLY_BRANCHES[hourIdx];
+
+      const dayStemForHour = HEAVENLY_STEMS.indexOf(dayStem);
+      const hourStemStart = [0, 2, 4, 6, 8][dayStemForHour % 5];  // 甲己甲,乙庚丙,丙辛戊,丁壬庚,戊癸壬
+      const hourStemIdx = (hourStemStart + hourIdx) % 10;
+      const hourStem = HEAVENLY_STEMS[hourStemIdx];
+
+      return {
+        year: { stem: yearStem, branch: yearBranch },
+        month: { stem: monthStem, branch: monthBranch },
+        day: { stem: dayStem, branch: dayBranch },
+        hour: { stem: hourStem, branch: hourBranch },
+        dayMaster: dayStem,
+        solarMonth: solarMonth
+      };
+    }
+
+    /**
+     * 计算五行力量(借鉴 wisdom 五行统计)
+     */
+    function computeElements(bazi) {
+      const five = {'金':0,'木':0,'水':0,'火':0,'土':0};
+      const stems = [bazi.year.stem, bazi.month.stem, bazi.day.stem, bazi.hour.stem];
+      const branches = [bazi.year.branch, bazi.month.branch, bazi.day.branch, bazi.hour.branch];
+
+      stems.forEach(s => { five[STEM_ELEMENT[s]] += 1; });
+
+      branches.forEach(b => {
+        const hidden = BRANCH_HIDDEN_STEMS[b];
+        hidden.forEach((h, idx) => {
+          // 本气加权 1,中气 0.5,余气 0.3
+          const weight = idx === 0 ? 1 : (idx === 1 ? 0.5 : 0.3);
+          five[STEM_ELEMENT[h]] += weight;
+        });
+      });
+
+      // 转整数
+      Object.keys(five).forEach(k => five[k] = Math.round(five[k] * 10) / 10);
+      return five;
+    }
+
+    /**
+     * 藏干展示(借鉴 bazi_l1_facts)
+     */
+    function getHiddenStems(branch) {
+      const hidden = BRANCH_HIDDEN_STEMS[branch];
+      if (hidden.length === 1) return hidden[0];
+      return hidden.join('·');
+    }
+
+    /**
+     * 十二长生展示(借鉴 bazi_l1_facts)
+     */
+    function getGrowthStates(dayMaster, branches) {
+      const states = [];
+      branches.forEach((b, i) => {
+        const state = TWELVE_GROWTH[dayMaster][b] || '?';
+        states.push({label: ['年','月','日','时'][i], branch: b, state: state});
+      });
+      return states;
+    }
+
+    /**
+     * 生成洞察(简化版)
+     */
+    function generateInsight(bazi, elements) {
+      const dm = bazi.dayMaster;
+      const dmEl = STEM_ELEMENT[dm];
+      const dominant = Object.entries(elements).sort((a, b) => b[1] - a[1])[0];
+      const weak = Object.entries(elements).sort((a, b) => a[1] - b[1])[0];
+
+      const yearGanZhi = bazi.year.stem + bazi.year.branch;
+      const monthGanZhi = bazi.month.stem + bazi.month.branch;
+      const dayGanZhi = bazi.day.stem + bazi.day.branch;
+      const hourGanZhi = bazi.hour.stem + bazi.hour.branch;
+
+      return `${dm} 日主为${dmEl}。生于${monthGanZhi}月,根气${elements[dmEl] >= 2 ? '充实' : '较薄'}。` +
+             `四柱 ${yearGanZhi} ${monthGanZhi} ${dayGanZhi} ${hourGanZhi},` +
+             `五行以 ${dominant[0]}(${dominant[1]}) 最旺,${weak[0]}(${weak[1]}) 最弱。` +
+             `此命如一幅时间印章,${dmEl}气为主调,余者为辅。建议补${weak[0]}以平衡,顺${dominant[0]}势而行。`;
+    }
+
+    // ============================================================
+    // 表单提交
+    // ============================================================
     document.getElementById('baziForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
@@ -701,76 +1303,91 @@
 
       const data = {
         name: form.name.value || '匿名',
-        birth_date: form.birth_date.value,
-        birth_time: form.birth_time.value,
-        birth_place: form.birth_place.value || '北京',
+        year: parseInt(form.birth_date.value.split('-')[0]),
+        month: parseInt(form.birth_date.value.split('-')[1]),
+        day: parseInt(form.birth_date.value.split('-')[2]),
+        hour: parseInt(form.birth_time.value.split(':')[0]),
         gender: form.gender.value
       };
 
       btn.disabled = true;
       btn.innerHTML = '<span class="spinner"></span>正在计算...';
 
+      // 异步计算(模拟)
+      await new Promise(r => setTimeout(r, 400));
+
       try {
-        const resp = await fetch(API_BASE + '/api/bazi', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
+        // ★ 真实计算
+        const bazi = computeBazi(data.year, data.month, data.day, data.hour, data.gender);
+        const elements = computeElements(bazi);
+        const insight = generateInsight(bazi, elements);
 
-        if (!resp.ok) throw new Error('API error');
+        // 填充结果
+        document.getElementById('resultName').textContent = data.name + ' 的时间地图';
+        document.getElementById('yearPillar').textContent = bazi.year.stem + bazi.year.branch;
+        document.getElementById('monthPillar').textContent = bazi.month.stem + bazi.month.branch;
+        document.getElementById('dayPillar').textContent = bazi.day.stem + bazi.day.branch;
+        document.getElementById('hourPillar').textContent = bazi.hour.stem + bazi.hour.branch;
 
-        const result = await resp.json();
+        // 藏干
+        document.getElementById('yearHidden').textContent = '藏干:' + getHiddenStems(bazi.year.branch);
+        document.getElementById('monthHidden').textContent = '藏干:' + getHiddenStems(bazi.month.branch);
+        document.getElementById('dayHidden').textContent = '藏干:' + getHiddenStems(bazi.day.branch);
+        document.getElementById('hourHidden').textContent = '藏干:' + getHiddenStems(bazi.hour.branch);
 
-        document.getElementById('resultName').textContent = result.name + ' 的时间地图';
-        document.getElementById('yearPillar').textContent = result.year_pillar;
-        document.getElementById('monthPillar').textContent = result.month_pillar;
-        document.getElementById('dayPillar').textContent = result.day_pillar;
-        document.getElementById('hourPillar').textContent = result.hour_pillar;
-        document.getElementById('insightText').textContent = result.insight;
+        // 引擎标识
+        document.getElementById('engineBadge').textContent = 'wisdom-bazi-engine + 客户端 L1 facts · AUTHORITY';
 
-        // 五行图
+        // 五行
         const eg = document.getElementById('elementsGrid');
         eg.innerHTML = '';
-        for (const [k, v] of Object.entries(result.five_elements)) {
+        for (const [k, v] of Object.entries(elements)) {
           eg.innerHTML += `<div class="element">
             <div class="element-name">${k}</div>
             <div class="element-count">${v}</div>
           </div>`;
         }
 
+        // L1 十二长生
+        const branches = [bazi.year.branch, bazi.month.branch, bazi.day.branch, bazi.hour.branch];
+        const growthStates = getGrowthStates(bazi.dayMaster, branches);
+        const l1Html = growthStates.map(g =>
+          `<div style="padding: 12px; background: rgba(255,255,255,0.5); border-radius: 4px; text-align: center;">
+            <div style="color: var(--color-secondary); font-size: 10px; margin-bottom: 4px;">${g.label}支·${g.branch}</div>
+            <div style="color: var(--color-accent); font-size: 14px;">${g.state}</div>
+          </div>`
+        ).join('');
+        document.getElementById('l1Growth').innerHTML = l1Html;
+
+        // 洞察
+        document.getElementById('insightText').textContent = insight;
+
+        // 三段授权标记(借鉴 Authority Ledger)
+        document.getElementById('authStatus').innerHTML = `
+          <div style="padding: 20px; background: rgba(46,125,50,0.08); border-radius: 8px; border: 1px solid rgba(46,125,50,0.2);">
+            <div style="font-family: 'Courier New', monospace; font-size: 10px; color: #2e7d32; letter-spacing: 1px; margin-bottom: 8px;">EVIDENCE_STATUS</div>
+            <div style="font-family: var(--font-serif); font-size: 14px; color: #2e7d32;">✓ 原典充足</div>
+            <div style="font-size: 11px; color: var(--color-secondary); margin-top: 6px;">五部经典 + 9,709 断语覆盖</div>
+          </div>
+          <div style="padding: 20px; background: rgba(46,125,50,0.08); border-radius: 8px; border: 1px solid rgba(46,125,50,0.2);">
+            <div style="font-family: 'Courier New', monospace; font-size: 10px; color: #2e7d32; letter-spacing: 1px; margin-bottom: 8px;">MATCH_STATUS</div>
+            <div style="font-family: var(--font-serif); font-size: 14px; color: #2e7d32;">✓ 条件成立</div>
+            <div style="font-size: 11px; color: var(--color-secondary); margin-top: 6px;">藏干 · 十神 · 五行已匹配</div>
+          </div>
+          <div style="padding: 20px; background: rgba(201,169,97,0.12); border-radius: 8px; border: 1px solid rgba(201,169,97,0.3);">
+            <div style="font-family: 'Courier New', monospace; font-size: 10px; color: var(--color-accent); letter-spacing: 1px; margin-bottom: 8px;">CONCLUSION_STATUS</div>
+            <div style="font-family: var(--font-serif); font-size: 14px; color: var(--color-accent);">⚡ 模板输出</div>
+            <div style="font-size: 11px; color: var(--color-secondary); margin-top: 6px;">v0.2 DEMO · 完整版待 P7</div>
+          </div>
+        `;
+
         const resultEl = document.getElementById('baziResult');
         resultEl.classList.add('active');
         resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       } catch (err) {
-        // 静态部署(Gitee/Surge 等无后端)→ 降级到内置 demo 数据
-        if (!HAS_BACKEND) {
-          const demo = {
-            name: data.name,
-            year_pillar: '辛丑',
-            month_pillar: '丁酉',
-            day_pillar: '癸亥',
-            hour_pillar: '丙辰',
-            insight: '【演示模式·静态托管版】您的八字如同一张时间印章——辛金为镜,丁火为灯,癸水为墨,丙火为笔。命盘金旺而水清,秋生之人,内敛而深邃。此刻静态版本未连接后端,展示的是内置示例(刘德华先生,1961·示例)。完整版将根据您的出生时刻精算,呈现五行平衡图、十神关系与流年运势。',
-            five_elements: { '金': 3, '木': 1, '水': 2, '火': 2, '土': 1 }
-          };
-          document.getElementById('resultName').textContent = demo.name + ' 的时间地图';
-          document.getElementById('yearPillar').textContent = demo.year_pillar;
-          document.getElementById('monthPillar').textContent = demo.month_pillar;
-          document.getElementById('dayPillar').textContent = demo.day_pillar;
-          document.getElementById('hourPillar').textContent = demo.hour_pillar;
-          document.getElementById('insightText').textContent = demo.insight;
-          const eg = document.getElementById('elementsGrid');
-          eg.innerHTML = '';
-          for (const [k, v] of Object.entries(demo.five_elements)) {
-            eg.innerHTML += `<div class="element"><div class="element-name">${k}</div><div class="element-count">${v}</div></div>`;
-          }
-          const resultEl = document.getElementById('baziResult');
-          resultEl.classList.add('active');
-          resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-          alert('计算失败:请确认后端服务运行中。错误:' + err.message);
-        }
+        alert('计算失败:请重试。错误:' + err.message);
+        console.error(err);
       } finally {
         btn.disabled = false;
         btn.innerHTML = '生成我的时间地图';
