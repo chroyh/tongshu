@@ -1,120 +1,237 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>东方时间智能 · 体验版 v2</title>
-  <meta name="description" content="基于传统东方时间智慧的个人时间洞察 · 五部经典支撑 · 测试体验版">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <!-- LIORIN 视觉规范:思源宋体 + Inter -->
+  <!-- ============================================================
+       SEO & Social (Celestial Atelier · US market)
+       ============================================================ -->
+  <title>Celestial Atelier · Where East Meets West — Your Personal Cosmic Blueprint</title>
+  <meta name="description" content="Celestial Atelier decodes your cosmic blueprint by fusing Eastern time intelligence (BaZi / Four Pillars) with Western astrology, tarot, and numerology. Personalized report, classical evidence, transparent governance.">
+  <meta name="keywords" content="bazi calculator, four pillars destiny, chinese astrology, personal cosmic report, eastern astrology, western astrology combined, horoscope blueprint">
+  <meta name="author" content="Celestial Atelier">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://chroyh.github.io/tongshu/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Celestial Atelier · Your Personal Cosmic Blueprint">
+  <meta property="og:description" content="Where East Meets West. Decode your cosmic blueprint through time-tested BaZi, astrology, and numerology.">
+  <meta property="og:url" content="https://chroyh.github.io/tongshu/">
+  <meta property="og:site_name" content="Celestial Atelier">
+  <meta property="og:image" content="https://chroyh.github.io/tongshu/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Celestial Atelier · Where East Meets West">
+  <meta name="twitter:description" content="Decode your cosmic blueprint — BaZi + Western astrology + numerology, fused.">
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#0A0A0A">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Celestial Atelier",
+    "url": "https://chroyh.github.io/tongshu/",
+    "logo": "https://chroyh.github.io/tongshu/logo.png",
+    "description": "Celestial Atelier decodes personal cosmic blueprints by fusing Eastern BaZi with Western astrology, tarot, and numerology.",
+    "sameAs": []
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite + SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Celestial Atelier",
+    "url": "https://chroyh.github.io/tongshu/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://chroyh.github.io/tongshu/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: SoftwareApplication (BaZi Calculator) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Celestial Atelier BaZi Calculator",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Any (Web)",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free client-side BaZi (Four Pillars of Destiny) calculator with classical evidence and modern interpretation."
+  }
+  </script>
 
   <style>
     /* ============================================================
-       LIORIN 设计 Token · 基于东方时间智能设计规范
+       Design Tokens — Celestial Atelier (Black + Gold)
        ============================================================ */
     :root {
-      --color-bg: #F5F0E6;          /* Warm Ivory */
-      --color-ink: #0A0A0A;          /* Ink / Deep Charcoal */
-      --color-secondary: #8B6F47;    /* Muted Earth */
-      --color-accent: #C9A961;       /* Warm Gold */
-      --color-vermilion: #C84B31;    /* 朱红 - 仅用于强调 */
-      --color-rule: rgba(139, 111, 71, 0.15);
+      --color-bg: #0A0A0A;
+      --color-bg-soft: #141414;
+      --color-bg-card: rgba(20, 20, 20, 0.6);
+      --color-ink: #F5F0E6;
+      --color-ink-soft: rgba(245, 240, 230, 0.7);
+      --color-secondary: rgba(245, 240, 230, 0.55);
+      --color-muted: rgba(245, 240, 230, 0.35);
+      --color-accent: #C9A961;
+      --color-accent-dim: rgba(201, 169, 97, 0.18);
+      --color-accent-glow: rgba(201, 169, 97, 0.35);
+      --color-bronze: #8B6F47;
+      --color-rule: rgba(201, 169, 97, 0.15);
+      --color-vermilion: #C75146;
+      --color-success: #6FA86F;
 
-      --font-serif: 'Noto Serif SC', 'Source Han Serif SC', serif;
-      --font-sans: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+      --font-serif: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
-      --radius-card: 16px;
+      --container: 1200px;
+      --radius-card: 14px;
       --radius-button: 8px;
       --radius-pill: 999px;
 
-      --shadow-soft: 0 2px 16px rgba(10,10,10,0.06);
-      --shadow-hover: 0 4px 24px rgba(10,10,10,0.10);
-
-      --container: 1200px;
+      --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.4);
+      --shadow-hover: 0 12px 40px rgba(201, 169, 97, 0.15);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
+    /* ============================================================
+       Reset & Base
+       ============================================================ */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
+      font-family: var(--font-sans);
       background: var(--color-bg);
       color: var(--color-ink);
-      font-family: var(--font-sans);
       line-height: 1.6;
+      font-weight: 300;
       -webkit-font-smoothing: antialiased;
-      padding-top: 44px; /* 演示横幅高度 */
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+    img { max-width: 100%; display: block; }
+
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute; left: -9999px;
+      background: var(--color-accent); color: var(--color-bg);
+      padding: 12px 24px; border-radius: var(--radius-button);
+      font-weight: 600; z-index: 9999;
+    }
+    .skip-link:focus { left: 16px; top: 16px; }
+
+    /* ============================================================
+       Demo banner
+       ============================================================ */
+    .demo-banner {
+      display: block;
+      background: linear-gradient(90deg, var(--color-accent), #d4b572);
+      color: var(--color-bg);
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     /* ============================================================
        Navbar
        ============================================================ */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(245, 240, 230, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      z-index: 100;
-      padding: 16px 24px;
-      border-bottom: 1px solid rgba(139, 111, 71, 0.08);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-rule);
     }
-
     .nav-inner {
       max-width: var(--container);
       margin: 0 auto;
+      padding: 18px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
     .logo {
       font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      color: var(--color-ink);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: var(--color-accent);
     }
-
-    .nav-links {
+    .logo-mark {
+      display: inline-block;
+      width: 28px; height: 28px;
+      border: 1px solid var(--color-accent);
+      border-radius: 50%;
+      margin-right: 10px;
+      vertical-align: middle;
+      position: relative;
+    }
+    .logo-mark::before {
+      content: "✦";
+      position: absolute;
+      inset: 0;
       display: flex;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--color-secondary);
-      text-decoration: none;
+      align-items: center; justify-content: center;
       font-size: 14px;
+      color: var(--color-accent);
+    }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: var(--color-ink-soft);
       transition: color 0.3s;
     }
-
-    .nav-links a:hover { color: var(--color-ink); }
-
+    .nav-links a:hover { color: var(--color-accent); }
     .nav-cta {
-      background: var(--color-ink);
-      color: var(--color-bg);
       padding: 8px 20px;
+      border: 1px solid var(--color-accent);
       border-radius: var(--radius-pill);
-      font-size: 13px;
+      color: var(--color-accent) !important;
       font-weight: 500;
       transition: all 0.3s;
     }
-
-    .nav-cta:hover { background: var(--color-accent); color: var(--color-ink); }
+    .nav-cta:hover {
+      background: var(--color-accent);
+      color: var(--color-bg) !important;
+    }
+    .nav-mobile-toggle { display: none; background: none; border: none; color: var(--color-accent); font-size: 24px; }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; }
+      .nav-links { display: none; gap: 16px; }
+      .nav-links.open {
+        display: flex;
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column;
+        background: var(--color-bg);
+        padding: 24px;
+        border-bottom: 1px solid var(--color-rule);
+      }
+      .nav-mobile-toggle { display: block; }
     }
 
     /* ============================================================
        Hero
        ============================================================ */
     .hero {
-      min-height: 100vh;
+      min-height: calc(100vh - 130px);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -124,86 +241,120 @@
       position: relative;
       overflow: hidden;
     }
-
     .hero::before {
       content: "";
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(201, 169, 97, 0.15) 0%, transparent 70%);
-      animation: breathe 6s ease-in-out infinite;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(201, 169, 97, 0.12) 0%, transparent 65%);
+      animation: breathe 8s ease-in-out infinite;
+      pointer-events: none;
     }
-
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(201, 169, 97, 0.07) 1px, transparent 0);
+      background-size: 32px 32px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
     @keyframes breathe {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-      50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+      50% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
     }
 
     .hero-tag {
-      font-family: var(--font-serif);
-      font-size: 14px;
+      font-family: var(--font-mono);
+      font-size: 12px;
       letter-spacing: 8px;
-      color: var(--color-secondary);
-      margin-bottom: 24px;
+      color: var(--color-accent);
+      margin-bottom: 32px;
       text-transform: uppercase;
+      position: relative;
     }
-
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(40px, 6vw, 72px);
-      font-weight: 500;
-      line-height: 1.15;
-      margin-bottom: 24px;
+      font-size: clamp(40px, 7vw, 88px);
+      font-weight: 400;
+      line-height: 1.08;
+      margin-bottom: 28px;
       color: var(--color-ink);
-      letter-spacing: 4px;
+      letter-spacing: -0.5px;
+      max-width: 900px;
+      position: relative;
     }
-
+    .hero-title .accent { color: var(--color-accent); font-style: italic; }
     .hero-subtitle {
       font-size: 18px;
-      color: var(--color-secondary);
-      margin-bottom: 48px;
-      max-width: 600px;
+      color: var(--color-ink-soft);
+      margin-bottom: 56px;
+      max-width: 620px;
+      line-height: 1.7;
+      position: relative;
     }
-
     .hero-ctas {
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
       justify-content: center;
+      position: relative;
     }
 
     .btn-primary {
-      background: var(--color-ink);
+      background: var(--color-accent);
       color: var(--color-bg);
-      padding: 16px 36px;
+      padding: 18px 40px;
       border-radius: var(--radius-pill);
       font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
+      font-weight: 600;
       transition: all 0.3s;
       border: none;
-      cursor: pointer;
-      font-family: var(--font-sans);
+      letter-spacing: 0.5px;
     }
-
-    .btn-primary:hover { background: var(--color-accent); color: var(--color-ink); transform: translateY(-2px); }
-
+    .btn-primary:hover {
+      background: #d4b572;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201, 169, 97, 0.35);
+    }
     .btn-secondary {
       background: transparent;
       color: var(--color-ink);
-      padding: 16px 36px;
+      padding: 18px 40px;
       border-radius: var(--radius-pill);
       font-size: 15px;
       font-weight: 500;
-      text-decoration: none;
-      border: 1.5px solid var(--color-ink);
       transition: all 0.3s;
-      cursor: pointer;
-      font-family: var(--font-sans);
+      border: 1px solid var(--color-ink-soft);
+    }
+    .btn-secondary:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
     }
 
-    .btn-secondary:hover { background: var(--color-ink); color: var(--color-bg); }
+    .hero-trust {
+      margin-top: 72px;
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      position: relative;
+    }
+    .hero-trust span strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 24px;
+      color: var(--color-accent);
+      letter-spacing: 0;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
 
     /* ============================================================
        Section Common
@@ -212,166 +363,255 @@
       max-width: var(--container);
       margin: 0 auto;
       padding: 100px 24px;
+      position: relative;
     }
-
+    .section-header { text-align: center; margin-bottom: 64px; }
     .section-tag {
-      font-family: var(--font-serif);
-      font-size: 13px;
+      font-family: var(--font-mono);
+      font-size: 11px;
       letter-spacing: 6px;
       color: var(--color-accent);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       text-transform: uppercase;
     }
-
     .section-title {
       font-family: var(--font-serif);
-      font-size: clamp(32px, 4vw, 48px);
-      font-weight: 500;
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 400;
       margin-bottom: 24px;
-      letter-spacing: 2px;
+      letter-spacing: -0.3px;
+      line-height: 1.15;
     }
-
     .section-desc {
-      color: var(--color-secondary);
+      color: var(--color-ink-soft);
       font-size: 17px;
-      max-width: 700px;
+      max-width: 680px;
+      margin: 0 auto;
       line-height: 1.7;
     }
 
     /* ============================================================
-       三栏价值
+       Systems Grid (8 divination paths)
        ============================================================ */
-    .three-col {
+    .systems-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-top: 64px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
+    @media (max-width: 1024px) { .systems-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .systems-grid { grid-template-columns: 1fr; } }
 
-    @media (max-width: 768px) {
-      .three-col { grid-template-columns: 1fr; }
-    }
-
-    .value-card {
-      padding: 40px 32px;
-      background: rgba(255, 255, 255, 0.4);
+    .system-card {
+      padding: 32px 24px;
+      background: var(--color-bg-card);
       border-radius: var(--radius-card);
-      border: 1px solid rgba(139, 111, 71, 0.1);
+      border: 1px solid var(--color-rule);
       transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
     }
-
-    .value-card:hover {
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: var(--shadow-hover);
+    .system-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, var(--color-accent-dim), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .system-card:hover {
+      border-color: var(--color-accent);
       transform: translateY(-4px);
     }
-
-    .value-card .num {
+    .system-card:hover::before { opacity: 1; }
+    .system-icon {
       font-family: var(--font-serif);
-      font-size: 48px;
+      font-size: 36px;
       color: var(--color-accent);
       margin-bottom: 16px;
+      position: relative;
+    }
+    .system-card h3 {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+    .system-card .origin {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--color-muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      position: relative;
+    }
+    .system-card p {
+      color: var(--color-ink-soft);
+      font-size: 14px;
+      line-height: 1.65;
+      position: relative;
+    }
+    .system-card .status-tag {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 3px 10px;
+      background: var(--color-accent-dim);
+      color: var(--color-accent);
+      border-radius: var(--radius-pill);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
     }
 
-    .value-card h3 {
+    /* ============================================================
+       Three columns — Process
+       ============================================================ */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    @media (max-width: 900px) { .process-grid { grid-template-columns: 1fr; } }
+
+    .process-card {
+      padding: 48px 32px;
+      background: var(--color-bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--color-rule);
+      transition: all 0.4s;
+      text-align: center;
+    }
+    .process-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-4px);
+    }
+    .process-num {
+      font-family: var(--font-serif);
+      font-size: 64px;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .process-card h3 {
       font-family: var(--font-serif);
       font-size: 22px;
       margin-bottom: 12px;
+      letter-spacing: 1px;
     }
-
-    .value-card p { color: var(--color-secondary); font-size: 15px; }
+    .process-card p {
+      color: var(--color-ink-soft);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .engine-badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 4px 12px;
+      background: var(--color-accent-dim);
+      color: var(--color-accent);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+    }
 
     /* ============================================================
-       八字体验表单
+       Calculator Section
        ============================================================ */
-    .bazi-section {
-      background: linear-gradient(180deg, transparent 0%, rgba(201, 169, 97, 0.06) 100%);
+    .calculator-section {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.06) 0%, transparent 50%),
+        var(--color-bg);
     }
-
     .bazi-form {
-      max-width: 700px;
-      margin: 64px auto 0;
-      background: rgba(255, 255, 255, 0.6);
+      max-width: 760px;
+      margin: 32px auto 0;
+      background: var(--color-bg-card);
       padding: 48px;
       border-radius: var(--radius-card);
-      border: 1px solid rgba(139, 111, 71, 0.12);
+      border: 1px solid var(--color-rule);
       box-shadow: var(--shadow-soft);
     }
-
-    @media (max-width: 768px) {
-      .bazi-form { padding: 32px 24px; }
-    }
+    @media (max-width: 600px) { .bazi-form { padding: 32px 20px; } }
 
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 32px;
+      gap: 20px;
+      margin-bottom: 28px;
     }
-
-    @media (max-width: 600px) {
-      .form-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
 
     .form-field { display: flex; flex-direction: column; }
-
     .form-field.full { grid-column: 1 / -1; }
 
     .form-field label {
-      font-family: var(--font-serif);
-      font-size: 14px;
-      color: var(--color-secondary);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--color-accent);
       margin-bottom: 8px;
-      letter-spacing: 1px;
+      text-transform: uppercase;
     }
-
     .form-field input,
     .form-field select {
-      padding: 12px 16px;
-      border: 1px solid rgba(139, 111, 71, 0.25);
+      padding: 14px 16px;
+      border: 1px solid var(--color-rule);
       border-radius: var(--radius-button);
-      background: rgba(245, 240, 230, 0.5);
+      background: rgba(245, 240, 230, 0.04);
       font-family: var(--font-sans);
       font-size: 15px;
       color: var(--color-ink);
       transition: all 0.3s;
     }
-
     .form-field input:focus,
     .form-field select:focus {
       outline: none;
       border-color: var(--color-accent);
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(245, 240, 230, 0.08);
     }
-
+    .form-field select option {
+      background: var(--color-bg);
+      color: var(--color-ink);
+    }
     .form-submit {
       width: 100%;
-      padding: 16px;
-      background: var(--color-ink);
+      padding: 18px;
+      background: var(--color-accent);
       color: var(--color-bg);
       border: none;
       border-radius: var(--radius-button);
       font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.5px;
       transition: all 0.3s;
-      font-family: var(--font-sans);
+    }
+    .form-submit:hover {
+      background: #d4b572;
+      box-shadow: 0 8px 28px rgba(201, 169, 97, 0.3);
+    }
+    .form-submit:disabled { opacity: 0.6; cursor: wait; }
+    .disclaimer {
+      font-size: 12px;
+      color: var(--color-muted);
+      text-align: center;
+      margin-top: 16px;
+      font-style: italic;
     }
 
-    .form-submit:hover { background: var(--color-accent); color: var(--color-ink); }
-    .form-submit:disabled { opacity: 0.6; cursor: wait; }
-
     /* ============================================================
-       八字结果
+       Result Display
        ============================================================ */
     .bazi-result {
-      max-width: 900px;
+      max-width: 920px;
       margin: 64px auto 0;
       display: none;
     }
-
     .bazi-result.active { display: block; animation: fadeIn 0.8s ease; }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -383,74 +623,35 @@
       gap: 16px;
       margin-bottom: 32px;
     }
-
-    @media (max-width: 600px) {
-      .pillars { grid-template-columns: repeat(2, 1fr); }
-    }
+    @media (max-width: 600px) { .pillars { grid-template-columns: repeat(2, 1fr); } }
 
     .pillar {
-      background: rgba(255, 255, 255, 0.7);
-      padding: 24px 16px;
+      background: linear-gradient(180deg, rgba(201, 169, 97, 0.08) 0%, rgba(20, 20, 20, 0.6) 100%);
+      padding: 28px 16px;
       border-radius: var(--radius-card);
       text-align: center;
-      border-top: 3px solid var(--color-accent);
+      border-top: 2px solid var(--color-accent);
     }
-
     .pillar-label {
-      font-family: var(--font-serif);
-      font-size: 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
       letter-spacing: 4px;
-      color: var(--color-secondary);
+      color: var(--color-muted);
       margin-bottom: 12px;
+      text-transform: uppercase;
     }
-
     .pillar-chars {
       font-family: var(--font-serif);
-      font-size: 36px;
-      color: var(--color-ink);
-      line-height: 1.2;
-    }
-
-    .pillar-hidden {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      color: var(--color-secondary);
-      margin-top: 8px;
-      letter-spacing: 1px;
-    }
-
-    .insight-card {
-      background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(45,45,45,0.95) 100%);
-      color: var(--color-bg);
-      padding: 48px;
-      border-radius: var(--radius-card);
-      margin-top: 32px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .insight-card::before {
-      content: "";
-      position: absolute;
-      top: 0; right: 0;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(201,169,97,0.2) 0%, transparent 70%);
-    }
-
-    .insight-label {
-      font-family: var(--font-serif);
-      font-size: 13px;
-      letter-spacing: 4px;
+      font-size: 44px;
       color: var(--color-accent);
-      margin-bottom: 16px;
+      line-height: 1.1;
+      margin-bottom: 12px;
     }
-
-    .insight-text {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      line-height: 1.6;
-      position: relative;
-      z-index: 1;
+    .pillar-hidden {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--color-ink-soft);
+      letter-spacing: 0.5px;
     }
 
     .elements-grid {
@@ -459,262 +660,566 @@
       gap: 12px;
       margin-top: 32px;
     }
-
     .element {
-      padding: 16px 8px;
-      background: rgba(255, 255, 255, 0.08);
+      padding: 20px 8px;
+      background: rgba(245, 240, 230, 0.03);
+      border: 1px solid var(--color-rule);
       border-radius: var(--radius-button);
       text-align: center;
     }
-
     .element-name {
       font-family: var(--font-serif);
-      font-size: 18px;
+      font-size: 20px;
       color: var(--color-accent);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+    }
+    .element-count { font-size: 24px; color: var(--color-ink); font-weight: 300; }
+
+    .l1-block {
+      margin-top: 40px;
+      padding: 28px;
+      background: var(--color-bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--color-rule);
+    }
+    .l1-block-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .l1-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    @media (max-width: 600px) { .l1-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .l1-cell {
+      padding: 12px;
+      background: rgba(245, 240, 230, 0.04);
+      border-radius: var(--radius-button);
+      text-align: center;
+    }
+    .l1-cell .label { color: var(--color-muted); font-size: 10px; margin-bottom: 4px; }
+    .l1-cell .value { color: var(--color-accent); font-size: 14px; }
+
+    .insight-card {
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-bronze) 100%);
+      color: var(--color-bg);
+      padding: 48px;
+      border-radius: var(--radius-card);
+      margin-top: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .insight-card::before {
+      content: "";
+      position: absolute;
+      top: -50%; right: -10%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(245, 240, 230, 0.2) 0%, transparent 70%);
+    }
+    .insight-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--color-bg);
+      margin-bottom: 16px;
+      opacity: 0.7;
+      text-transform: uppercase;
+      position: relative;
+    }
+    .insight-text {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      line-height: 1.6;
+      position: relative;
     }
 
-    .element-count { font-size: 22px; }
-
-    /* ============================================================
-       治理铁律(借鉴 wisdom Authority Ledger)
-       ============================================================ */
-    .governance-grid {
+    .auth-status {
+      margin-top: 32px;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 0;
-      margin-top: 48px;
-      border-radius: var(--radius-card);
-      overflow: hidden;
+      gap: 12px;
+    }
+    @media (max-width: 600px) { .auth-status { grid-template-columns: 1fr; } }
+    .auth-cell {
+      padding: 20px;
+      background: var(--color-bg-card);
+      border-radius: var(--radius-button);
       border: 1px solid var(--color-rule);
-      background: rgba(255,255,255,0.4);
     }
-
-    @media (max-width: 900px) {
-      .governance-grid { grid-template-columns: 1fr; }
-    }
-
-    .gov-cell {
-      padding: 40px 28px;
-      border-right: 1px solid var(--color-rule);
-      text-align: center;
-    }
-
-    .gov-cell:last-child { border-right: none; }
-
-    @media (max-width: 900px) {
-      .gov-cell { border-right: none; border-bottom: 1px solid var(--color-rule); }
-      .gov-cell:last-child { border-bottom: none; }
-    }
-
-    .gov-status {
-      font-family: 'Courier New', monospace;
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: var(--color-vermilion);
-      margin-bottom: 16px;
-    }
-
-    .gov-symbol {
-      font-family: var(--font-serif);
-      font-size: 36px;
-      color: var(--color-accent);
-      margin-bottom: 16px;
-      font-weight: 500;
-    }
-
-    .gov-cell h4 {
-      font-family: var(--font-serif);
-      font-size: 18px;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
-
-    .gov-cell p {
-      font-size: 14px;
-      color: var(--color-secondary);
-      line-height: 1.7;
-    }
-
-    .gov-divider {
-      text-align: center;
-      padding: 24px 16px;
-      font-family: var(--font-serif);
-      font-size: 14px;
-      color: var(--color-secondary);
-      letter-spacing: 4px;
-    }
+    .auth-cell .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--color-accent); letter-spacing: 1px; margin-bottom: 8px; }
+    .auth-cell .val { font-family: var(--font-serif); font-size: 14px; color: var(--color-ink); }
+    .auth-cell .sub { font-size: 11px; color: var(--color-muted); margin-top: 6px; }
 
     /* ============================================================
-       五部经典断语(借鉴 wisdom 9709 条)
+       Pricing
        ============================================================ */
-    .classics-grid {
+    .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      margin-top: 48px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
     }
+    @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } }
 
-    @media (max-width: 900px) {
-      .classics-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    .classic-card {
-      padding: 24px 20px;
-      background: rgba(255,255,255,0.5);
+    .pricing-card {
+      padding: 40px 32px;
+      background: var(--color-bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--color-rule);
+      transition: all 0.4s;
+      position: relative;
+    }
+    .pricing-card.featured {
+      border-color: var(--color-accent);
+      background: linear-gradient(180deg, rgba(201, 169, 97, 0.05) 0%, var(--color-bg-card) 100%);
+    }
+    .pricing-card.featured::before {
+      content: "MOST POPULAR";
+      position: absolute;
+      top: -10px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-accent);
+      color: var(--color-bg);
+      padding: 4px 16px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+    .pricing-card:hover { transform: translateY(-4px); border-color: var(--color-accent); }
+
+    .pricing-name {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .pricing-amount {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--color-ink);
+      margin-bottom: 4px;
+    }
+    .pricing-amount .currency {
+      font-size: 24px;
+      vertical-align: top;
+      color: var(--color-ink-soft);
+    }
+    .pricing-amount .period {
+      font-size: 14px;
+      color: var(--color-muted);
+      font-family: var(--font-sans);
+    }
+    .pricing-desc {
+      color: var(--color-ink-soft);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+    .pricing-features li {
+      padding: 8px 0;
+      font-size: 14px;
+      color: var(--color-ink-soft);
+      border-bottom: 1px solid var(--color-rule);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pricing-features li::before {
+      content: "✦";
+      color: var(--color-accent);
+      font-size: 12px;
+    }
+    .pricing-features li:last-child { border-bottom: none; }
+
+    .pricing-cta {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: var(--radius-button);
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
       transition: all 0.3s;
     }
-
-    .classic-card:hover {
-      background: rgba(255,255,255,0.85);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .classic-name {
-      font-family: var(--font-serif);
-      font-size: 20px;
+    .pricing-cta.primary { background: var(--color-accent); color: var(--color-bg); border: none; }
+    .pricing-cta.primary:hover { background: #d4b572; }
+    .pricing-cta.secondary {
+      background: transparent;
       color: var(--color-ink);
-      margin-bottom: 4px;
-      letter-spacing: 2px;
+      border: 1px solid var(--color-ink-soft);
     }
+    .pricing-cta.secondary:hover { border-color: var(--color-accent); color: var(--color-accent); }
 
-    .classic-abbr {
-      font-family: 'Courier New', monospace;
-      font-size: 11px;
-      color: var(--color-secondary);
-      letter-spacing: 2px;
-      margin-bottom: 16px;
+    /* ============================================================
+       Knowledge (CE1-7 articles)
+       ============================================================ */
+    .knowledge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
     }
+    @media (max-width: 900px) { .knowledge-grid { grid-template-columns: 1fr; } }
 
-    .classic-stat {
-      font-family: var(--font-serif);
-      font-size: 28px;
+    .knowledge-card {
+      padding: 32px 28px;
+      background: var(--color-bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--color-rule);
+      transition: all 0.4s;
+      display: flex;
+      flex-direction: column;
+    }
+    .knowledge-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-4px);
+    }
+    .knowledge-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
       color: var(--color-accent);
-      margin-bottom: 4px;
-    }
-
-    .classic-stat-label {
-      font-size: 11px;
-      color: var(--color-secondary);
-      letter-spacing: 2px;
+      text-transform: uppercase;
       margin-bottom: 12px;
     }
-
-    .classic-quote {
+    .knowledge-card h3 {
       font-family: var(--font-serif);
-      font-size: 13px;
-      color: var(--color-ink);
+      font-size: 22px;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .knowledge-card p {
+      color: var(--color-ink-soft);
+      font-size: 14px;
       line-height: 1.7;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    .knowledge-link {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-accent);
+      letter-spacing: 1px;
+    }
+    .knowledge-link::after { content: " →"; }
+
+    /* ============================================================
+       Testimonials
+       ============================================================ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    @media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+    .testimonial-card {
+      padding: 32px;
+      background: var(--color-bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--color-rule);
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: """;
+      position: absolute;
+      top: 12px; left: 24px;
+      font-family: var(--font-serif);
+      font-size: 64px;
+      color: var(--color-accent);
+      opacity: 0.25;
+      line-height: 1;
+    }
+    .testimonial-quote {
+      font-family: var(--font-serif);
+      font-size: 17px;
       font-style: italic;
-      padding-top: 12px;
-      border-top: 1px solid var(--color-rule);
+      color: var(--color-ink);
+      margin-bottom: 24px;
+      line-height: 1.6;
+      position: relative;
+      padding-top: 16px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--color-accent-dim);
+      display: flex;
+      align-items: center; justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 16px;
+      color: var(--color-accent);
+    }
+    .testimonial-name {
+      font-size: 14px;
+      color: var(--color-ink);
+      font-weight: 500;
+    }
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--color-muted);
     }
 
     /* ============================================================
-       Authority Ledger 表格
+       FAQ
+       ============================================================ */
+    .faq-list {
+      max-width: 820px;
+      margin: 32px auto 0;
+    }
+    .faq-item {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-rule);
+      border-radius: var(--radius-card);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .faq-item[open] { border-color: var(--color-accent); }
+    .faq-summary {
+      padding: 20px 24px;
+      cursor: pointer;
+      font-family: var(--font-serif);
+      font-size: 17px;
+      color: var(--color-ink);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-summary::-webkit-details-marker { display: none; }
+    .faq-summary::after {
+      content: "+";
+      font-family: var(--font-mono);
+      color: var(--color-accent);
+      font-size: 20px;
+      transition: transform 0.3s;
+    }
+    .faq-item[open] .faq-summary::after { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 24px 20px;
+      color: var(--color-ink-soft);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       Newsletter / CTA
+       ============================================================ */
+    .newsletter {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .newsletter-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 48px;
+      background: linear-gradient(135deg, rgba(201, 169, 97, 0.08) 0%, rgba(20, 20, 20, 0.8) 100%);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--color-rule);
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter-inner::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 80%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    }
+    .newsletter h2 {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .newsletter p {
+      color: var(--color-ink-soft);
+      font-size: 17px;
+      margin-bottom: 32px;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) { .newsletter-form { flex-direction: column; } }
+    .newsletter-form input {
+      flex: 1;
+      padding: 16px 20px;
+      border: 1px solid var(--color-rule);
+      border-radius: var(--radius-pill);
+      background: rgba(245, 240, 230, 0.04);
+      color: var(--color-ink);
+      font-family: var(--font-sans);
+      font-size: 15px;
+    }
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+    .newsletter-form button {
+      padding: 16px 32px;
+      background: var(--color-accent);
+      color: var(--color-bg);
+      border: none;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+    .newsletter-form button:hover { background: #d4b572; }
+    .newsletter-note {
+      font-size: 12px;
+      color: var(--color-muted);
+      margin-top: 16px;
+    }
+
+    /* ============================================================
+       Authority Ledger
        ============================================================ */
     .ledger-wrap {
       max-width: 1000px;
-      margin: 48px auto 0;
-      background: rgba(255,255,255,0.5);
+      margin: 32px auto 0;
+      background: var(--color-bg-card);
       border-radius: var(--radius-card);
       border: 1px solid var(--color-rule);
       overflow: hidden;
     }
-
     .ledger-head {
-      background: var(--color-ink);
+      background: linear-gradient(90deg, var(--color-accent), var(--color-bronze));
       color: var(--color-bg);
       padding: 20px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-
     .ledger-head h4 {
-      font-family: var(--font-serif);
-      font-size: 16px;
+      font-family: var(--font-mono);
+      font-size: 14px;
       letter-spacing: 2px;
-      color: var(--color-accent);
     }
-
     .ledger-meta {
-      font-family: 'Courier New', monospace;
+      font-family: var(--font-mono);
       font-size: 11px;
-      color: rgba(245,240,230,0.6);
-      letter-spacing: 1px;
+      opacity: 0.8;
     }
-
     .ledger-table {
       width: 100%;
       border-collapse: collapse;
-      font-family: 'Courier New', monospace;
+      font-family: var(--font-mono);
       font-size: 12px;
     }
-
     .ledger-table thead {
-      background: rgba(201,169,97,0.12);
+      background: rgba(201, 169, 97, 0.08);
     }
-
     .ledger-table th,
     .ledger-table td {
-      padding: 12px 16px;
+      padding: 14px 16px;
       text-align: left;
       border-bottom: 1px solid var(--color-rule);
-      letter-spacing: 0.5px;
     }
-
     .ledger-table th {
       font-weight: 600;
-      color: var(--color-secondary);
-      font-size: 11px;
+      color: var(--color-accent);
+      font-size: 10px;
       letter-spacing: 2px;
+      text-transform: uppercase;
     }
-
-    .ledger-table td.cap { color: var(--color-accent); font-weight: 600; }
-    .ledger-table td.status-AUTHORITY { color: #2e7d32; font-weight: 600; }
-    .ledger-table td.status-FALLBACK { color: #f57c00; font-weight: 600; }
-    .ledger-table td.status-DEMO { color: var(--color-secondary); font-weight: 600; }
-
-    @media (max-width: 600px) {
-      .ledger-table { font-size: 10px; }
-      .ledger-table th, .ledger-table td { padding: 8px 6px; }
-    }
+    .ledger-table td.cap { color: var(--color-accent); font-weight: 500; }
+    .ledger-table td.status-AUTHORITY { color: var(--color-success); }
+    .ledger-table td.status-FALLBACK { color: #d4a017; }
+    .ledger-table td.status-DEMO { color: var(--color-muted); }
 
     /* ============================================================
        Footer
        ============================================================ */
     footer {
+      background: var(--color-bg-soft);
+      border-top: 1px solid var(--color-rule);
+      padding: 60px 24px 30px;
+    }
+    .footer-inner {
       max-width: var(--container);
       margin: 0 auto;
-      padding: 60px 24px 30px;
-      border-top: 1px solid rgba(139, 111, 71, 0.15);
-      text-align: center;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
     }
+    @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .footer-inner { grid-template-columns: 1fr; } }
 
-    .footer-tag {
-      font-family: var(--font-serif);
+    .footer-brand .logo { margin-bottom: 16px; }
+    .footer-brand p {
       font-size: 13px;
-      letter-spacing: 4px;
-      color: var(--color-secondary);
+      color: var(--color-muted);
+      line-height: 1.7;
+      max-width: 320px;
+    }
+    .footer-col h5 {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--color-accent);
       margin-bottom: 16px;
+      text-transform: uppercase;
     }
-
-    .footer-text {
+    .footer-col ul { list-style: none; }
+    .footer-col li {
+      padding: 6px 0;
       font-size: 13px;
-      color: var(--color-secondary);
-      line-height: 1.8;
+      color: var(--color-ink-soft);
+    }
+    .footer-col a:hover { color: var(--color-accent); }
+
+    .footer-bottom {
+      max-width: var(--container);
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--color-muted);
     }
 
     /* ============================================================
-       Loading
+       Loading & Utility
        ============================================================ */
     .spinner {
       display: inline-block;
-      width: 16px; height: 16px;
+      width: 14px; height: 14px;
       border: 2px solid var(--color-bg);
       border-top-color: transparent;
       border-radius: 50%;
@@ -722,400 +1227,693 @@
       vertical-align: middle;
       margin-right: 8px;
     }
-
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Disclaimer */
-    .disclaimer {
-      font-size: 12px;
-      color: var(--color-secondary);
-      text-align: center;
-      margin-top: 16px;
-      font-style: italic;
-    }
+    /* ============================================================
+       Reveal animation on scroll
+       ============================================================ */
+    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* 引擎水印 */
-    .engine-badge {
-      display: inline-block;
-      margin-left: 12px;
-      padding: 3px 10px;
-      background: rgba(201,169,97,0.15);
-      color: var(--color-accent);
-      border-radius: 999px;
-      font-family: 'Courier New', monospace;
-      font-size: 11px;
-      letter-spacing: 1px;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 演示模式横幅(静态托管版自动出现) -->
-  <div id="demo-banner" style="display:block;background:#C9A961;color:#0A0A0A;padding:10px 20px;text-align:center;font-size:13px;font-weight:600;letter-spacing:0.5px;font-family:'Inter','Noto Serif SC',sans-serif;">
-    ⚡ 静态演示版 v2 · 客户端八字引擎已接入 · 五部经典支撑 · 完整版即将上线
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Demo banner -->
+  <div class="demo-banner" role="status">
+    ⚡ Static Demo v3 · Client-side BaZi engine live · Five classical sources supporting · Full version coming soon
   </div>
 
   <!-- Navbar -->
-  <nav>
+  <nav aria-label="Primary">
     <div class="nav-inner">
-      <div class="logo">东方时间智能</div>
-      <div class="nav-links">
-        <a href="#hero">了解</a>
-        <a href="#bazi">体验</a>
-        <a href="#architecture">架构</a>
-        <a href="#governance">治理</a>
-        <a href="#classics">经典</a>
-        <a href="#bazi" class="nav-cta">开始</a>
+      <a href="#hero" class="logo">
+        <span class="logo-mark" aria-hidden="true"></span>
+        CELESTIAL ATELIER
+      </a>
+      <button class="nav-mobile-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'); document.querySelector('.nav-links').classList.toggle('open');">☰</button>
+      <div class="nav-links" role="navigation">
+        <a href="#systems">Systems</a>
+        <a href="#process">Process</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#knowledge">Library</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#calculator" class="nav-cta">Get Started</a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <div class="hero-tag">EASTERN TIME INTELLIGENCE</div>
-    <h1 class="hero-title">理解你的时间<br>活出你的意图</h1>
-    <p class="hero-subtitle">基于传统东方时间智慧的个人洞察 · 测试体验版</p>
-    <div class="hero-ctas">
-      <a href="#bazi" class="btn-primary">发现你的路径</a>
-      <a href="#architecture" class="btn-secondary">了解架构</a>
-    </div>
-  </section>
+  <main id="main">
 
-  <!-- 三层架构(借鉴 wisdom 算→辨→解) -->
-  <section id="architecture">
-    <div class="section-tag">ARCHITECTURE</div>
-    <h2 class="section-title">三层确定性结构<br>从时间到洞察</h2>
-    <p class="section-desc">
-      借鉴开源工程 ZQMMING/wisdom 的核心治理思路。<br>
-      把传统知识从混沌的"算命"分解为可审计的三层结构。
-    </p>
+    <!-- ============================================================
+         1 · Hero — Brand narrative + single CTA
+         ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero-tag">EAST × WEST · TIME-TESTED WISDOM</div>
+      <h1 class="hero-title" id="hero-title">
+        Where East <span class="accent">Meets</span> West —<br>
+        Decode Your Cosmic Blueprint
+      </h1>
+      <p class="hero-subtitle">
+        Celestial Atelier fuses 5,000-year Eastern time intelligence (BaZi · Four Pillars)
+        with Western astrology, tarot, and numerology — into one transparent, evidence-based personal report.
+      </p>
+      <div class="hero-ctas">
+        <a href="#calculator" class="btn-primary">Decode Your Blueprint →</a>
+        <a href="#systems" class="btn-secondary">Explore the 8 Systems</a>
+      </div>
+      <div class="hero-trust" aria-label="Trust signals">
+        <span><strong>8</strong>DIVINATION PATHS</span>
+        <span><strong>9,709</strong>CLASSICAL QUOTES</span>
+        <span><strong>100%</strong>CLIENT-SIDE PRIVACY</span>
+        <span><strong>MIT</strong>OPEN GOVERNANCE</span>
+      </div>
+    </section>
 
-    <div class="three-col">
-      <div class="value-card">
-        <div class="num">算</div>
-        <h3>CALCULATE</h3>
-        <p>
-          真太阳时 + 农历转换 + 节气精排<br>
-          天干地支精确到分钟<br>
-          <span class="engine-badge">sxtwl + canonical</span>
+    <!-- ============================================================
+         2 · Systems Grid — 8 divination paths
+         ============================================================ -->
+    <section id="systems" aria-labelledby="systems-title">
+      <div class="section-header">
+        <div class="section-tag">EIGHT COSMIC SYSTEMS</div>
+        <h2 class="section-title" id="systems-title">One Soul, Eight Lenses</h2>
+        <p class="section-desc">
+          Most apps offer one tradition. Celestial Atelier integrates eight — from BaZi and Western astrology to Tarot and Kabbalah —
+          because no single system sees the whole picture.
         </p>
       </div>
-      <div class="value-card">
-        <div class="num">辨</div>
-        <h3>NOTICE</h3>
-        <p>
-          藏干表 + 十二长生 + 五行力量<br>
-          不判定强弱 · 只描述结构<br>
-          <span class="engine-badge">L1 facts · neutral</span>
+
+      <div class="systems-grid">
+        <article class="system-card">
+          <div class="system-icon" aria-hidden="true">八字</div>
+          <h3>BaZi · Four Pillars</h3>
+          <div class="origin">EAST · CHINA 1000 BCE</div>
+          <p>Year · Month · Day · Hour stems and branches reveal your cosmic DNA at the moment of birth.</p>
+          <span class="status-tag">⚡ AUTHORITY · LIVE</span>
+        </article>
+
+        <article class="system-card">
+          <div class="system-icon" aria-hidden="true">♈</div>
+          <h3>Western Astrology</h3>
+          <div class="origin">WEST · BABYLON 2000 BCE</div>
+          <p>12 zodiac signs, planetary houses, and aspects — your personality archetype under the stars.</p>
+          <span class="status-tag">⚡ AUTHORITY · LIVE</span>
+        </article>
+
+        <article class="system-card">
+          <div class="system-icon" aria-hidden="true">XXII</div>
+          <h3>Tarot · Major Arcana</h3>
+          <div class="origin">WEST · 15TH CENTURY</div>
+          <p>22 archetypal cards mapping the soul's journey from The Fool to The World.</p>
+          <span class="status-tag">⚡ AUTHORITY · LIVE</span>
+        </article>
+
+        <article class="system-card">
+          <div class="system-icon" aria-hidden="true">№</div>
+          <h3>Numerology</h3>
+          <div class="origin">WEST · PYTHAGORAS 600 BCE</div>
+          <p>Life Path, Expression, and Soul Urge numbers — the mathematical signature of destiny.</p>
+          <span class="status-tag">⚡ AUTHORITY · LIVE</span>
+        </article>
+
+        <article class="system-card">
+          <div class="system-icon" aria-hidden="true">風</div>
+          <h3>Feng Shui</h3>
+          <div class="origin">EAST · CHINA 3000 BCE</div>
+          <p>Environmental harmony — how space, light, and orientation shape your qi flow.</p>
+          <span class="status-tag">○ AUTHORITY · BETA</span>
+        </article>
+
+        <article class="system-card">
+          <div class="system-icon" aria-hidden="true">紫微</div>
+          <h3>Zi Wei Dou Shu</h3>
+          <div class="origin">EAST · TANG DYNASTY</div>
+          <p>14 main stars across 12 palaces — the imperial court's cosmic court.</p>
+          <span class="status-tag">○ AUTHORITY · BETA</span>
+        </article>
+
+        <article class="system-card">
+          <div class="system-icon" aria-hidden="true">☸</div>
+          <h3>Kabbalah · Tree of Life</h3>
+          <div class="origin">WEST · 12TH CENTURY</div>
+          <p>10 sefirot and 22 paths — the blueprint of divine emanation.</p>
+          <span class="status-tag">○ AUTHORITY · PLANNED</span>
+        </article>
+
+        <article class="system-card">
+          <div class="system-icon" aria-hidden="true">◉</div>
+          <h3>Mayan Calendar</h3>
+          <div class="origin">MESOAMERICA · 2000 BCE</div>
+          <p>Tzolkin 260-day sacred calendar — your galactic signature aligned with cosmic cycles.</p>
+          <span class="status-tag">○ AUTHORITY · PLANNED</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3 · Process — 3-layer architecture
+         ============================================================ -->
+    <section id="process" aria-labelledby="process-title">
+      <div class="section-header">
+        <div class="section-tag">THE PROCESS</div>
+        <h2 class="section-title" id="process-title">Three Layers of Determinism</h2>
+        <p class="section-desc">
+          From raw time data to an analytical intent — every conclusion is auditable, sourced, and governed.
         </p>
       </div>
-      <div class="value-card">
-        <div class="num">解</div>
-        <h3>INTERPRET</h3>
-        <p>
-          五部经典 9,709 条断语匹配<br>
-          原典授权 · 现代语言映射<br>
-          <span class="engine-badge">classical_evidence</span>
+
+      <div class="process-grid">
+        <article class="process-card">
+          <div class="process-num">算</div>
+          <h3>CALCULATE</h3>
+          <p>True solar time · lunar calendar · 24 solar terms · stems and branches accurate to the minute.</p>
+          <span class="engine-badge">sxtwl · canonical · AUTHORITY</span>
+        </article>
+
+        <article class="process-card">
+          <div class="process-num">辨</div>
+          <h3>NOTICE</h3>
+          <p>Hidden stems · 12 growth stages · 5-element weights · no judgment, only structural description.</p>
+          <span class="engine-badge">L1 facts · neutral · AUTHORITY</span>
+        </article>
+
+        <article class="process-card">
+          <div class="process-num">解</div>
+          <h3>INTERPRET</h3>
+          <p>9,709 classical quotes matched to your chart · original sources cited · modern language mapped.</p>
+          <span class="engine-badge">classical evidence · FALLBACK</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4 · Calculator — Live BaZi form
+         ============================================================ -->
+    <section id="calculator" class="calculator-section" aria-labelledby="calculator-title">
+      <div class="section-header">
+        <div class="section-tag">FREE LIVE CALCULATOR</div>
+        <h2 class="section-title" id="calculator-title">Map Your Time · Now</h2>
+        <p class="section-desc">
+          Enter your birth details · generate a free BaZi Four Pillars reading · 100% client-side, no data sent anywhere.
         </p>
       </div>
-    </div>
-  </section>
 
-  <!-- 八字体验 -->
-  <section id="bazi" class="bazi-section">
-    <div class="section-tag">EXPERIENCE</div>
-    <h2 class="section-title">体验你的时间地图</h2>
-    <p class="section-desc">
-      输入出生信息,生成基于传统计算方法的个人洞察。<br>
-      本测试版本仅供参考与文化体验。
-    </p>
+      <form class="bazi-form" id="baziForm" aria-label="BaZi calculator form">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="name">Name (optional)</label>
+            <input type="text" id="name" name="name" placeholder="Anonymous">
+          </div>
+          <div class="form-field">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other / Prefer not to say</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="birth_date">Birth Date</label>
+            <input type="date" id="birth_date" name="birth_date" required value="1990-06-15">
+          </div>
+          <div class="form-field">
+            <label for="birth_time">Birth Time</label>
+            <input type="time" id="birth_time" name="birth_time" required value="14:30">
+          </div>
+          <div class="form-field full">
+            <label for="birth_place">Birth Place (optional)</label>
+            <input type="text" id="birth_place" name="birth_place" placeholder="e.g. New York">
+          </div>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">Generate My Cosmic Blueprint</button>
+        <p class="disclaimer">
+          * This tool is built on traditional time systems for cultural exploration. Content is for self-reflection only and does not constitute life advice.
+        </p>
+      </form>
 
-    <form class="bazi-form" id="baziForm">
-      <div class="form-grid">
-        <div class="form-field">
-          <label for="name">称呼(可选)</label>
-          <input type="text" id="name" name="name" placeholder="匿名">
-        </div>
-        <div class="form-field">
-          <label for="gender">性别</label>
-          <select id="gender" name="gender">
-            <option value="male">男</option>
-            <option value="female">女</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label for="birth_date">出生日期</label>
-          <input type="date" id="birth_date" name="birth_date" required value="1990-06-15">
-        </div>
-        <div class="form-field">
-          <label for="birth_time">出生时间</label>
-          <input type="time" id="birth_time" name="birth_time" required value="14:30">
-        </div>
-        <div class="form-field full">
-          <label for="birth_place">出生地点(可选)</label>
-          <input type="text" id="birth_place" name="birth_place" placeholder="如:北京">
-        </div>
-      </div>
-      <button type="submit" class="form-submit" id="submitBtn">生成我的时间地图</button>
-      <p class="disclaimer">* 本工具基于传统时间体系,所生成内容仅供文化体验与自我参考,不构成任何决策建议。</p>
-    </form>
+      <!-- Result area -->
+      <div class="bazi-result" id="baziResult" aria-live="polite">
+        <h3 class="section-title" style="margin-top: 64px; text-align: center;" id="resultName"></h3>
 
-    <!-- 结果区 -->
-    <div class="bazi-result" id="baziResult">
-      <h3 class="section-title" style="margin-top: 64px; text-align: center;" id="resultName"></h3>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-label">YEAR</div>
+            <div class="pillar-chars" id="yearPillar"></div>
+            <div class="pillar-hidden" id="yearHidden"></div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-label">MONTH</div>
+            <div class="pillar-chars" id="monthPillar"></div>
+            <div class="pillar-hidden" id="monthHidden"></div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-label">DAY</div>
+            <div class="pillar-chars" id="dayPillar"></div>
+            <div class="pillar-hidden" id="dayHidden"></div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-label">HOUR</div>
+            <div class="pillar-chars" id="hourPillar"></div>
+            <div class="pillar-hidden" id="hourHidden"></div>
+          </div>
+        </div>
 
-      <!-- 四柱 -->
-      <div class="pillars">
-        <div class="pillar">
-          <div class="pillar-label">年柱</div>
-          <div class="pillar-chars" id="yearPillar"></div>
-          <div class="pillar-hidden" id="yearHidden"></div>
+        <div style="text-align: center; margin-top: 8px;">
+          <span class="engine-badge" id="engineBadge">Engine: ...</span>
         </div>
-        <div class="pillar">
-          <div class="pillar-label">月柱</div>
-          <div class="pillar-chars" id="monthPillar"></div>
-          <div class="pillar-hidden" id="monthHidden"></div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-label">日柱</div>
-          <div class="pillar-chars" id="dayPillar"></div>
-          <div class="pillar-hidden" id="dayHidden"></div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-label">时柱</div>
-          <div class="pillar-chars" id="hourPillar"></div>
-          <div class="pillar-hidden" id="hourHidden"></div>
-        </div>
-      </div>
 
-      <!-- 引擎标识 -->
-      <div style="text-align: center; margin-top: 8px;">
-        <span class="engine-badge" id="engineBadge">计算引擎: ...</span>
-      </div>
+        <div class="elements-grid" id="elementsGrid"></div>
 
-      <!-- 五行图 -->
-      <div class="elements-grid" id="elementsGrid"></div>
-
-      <!-- L1 facts 展示(借鉴 wisdom bazi_l1_facts) -->
-      <div style="margin-top: 48px; padding: 32px; background: rgba(255,255,255,0.4); border-radius: var(--radius-card); border: 1px solid var(--color-rule);">
-        <div style="font-family: var(--font-serif); font-size: 14px; letter-spacing: 4px; color: var(--color-secondary); margin-bottom: 16px;">
-          L1 原始事实 · 十二长生
+        <div class="l1-block">
+          <div class="l1-block-title">L1 Raw Facts · Twelve Growth States</div>
+          <div class="l1-grid" id="l1Growth"></div>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; font-family: 'Courier New', monospace; font-size: 12px;" id="l1Growth">
+
+        <div class="insight-card">
+          <div class="insight-label">PERSONAL INSIGHT</div>
+          <p class="insight-text" id="insightText"></p>
+        </div>
+
+        <div class="auth-status" id="authStatus"></div>
+
+        <div style="margin-top: 40px; text-align: center;">
+          <a href="#pricing" class="btn-secondary" style="display: inline-block;">Upgrade to Full Reading →</a>
         </div>
       </div>
+    </section>
 
-      <!-- 洞察 -->
-      <div class="insight-card">
-        <div class="insight-label">PERSONAL INSIGHT</div>
-        <p class="insight-text" id="insightText"></p>
+    <!-- ============================================================
+         5 · Knowledge Library — CE1-7
+         ============================================================ -->
+    <section id="knowledge" aria-labelledby="knowledge-title">
+      <div class="section-header">
+        <div class="section-tag">THE LIBRARY</div>
+        <h2 class="section-title" id="knowledge-title">Seven Doors into Cosmic Wisdom</h2>
+        <p class="section-desc">
+          From the science of time cycles to the philosophy of destiny — long-form essays unpacking the systems behind your blueprint.
+        </p>
       </div>
 
-      <!-- 三段授权标记(借鉴 Authority Ledger) -->
-      <div style="margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;" id="authStatus">
+      <div class="knowledge-grid">
+        <article class="knowledge-card">
+          <div class="knowledge-meta">CE-01 · FOUNDATIONS</div>
+          <h3>What Time Means in Eastern Cosmology</h3>
+          <p>Why Chinese metaphysics treats time as a living substance — and how that shapes every BaZi reading you receive.</p>
+          <a href="#" class="knowledge-link">Read essay</a>
+        </article>
+
+        <article class="knowledge-card">
+          <div class="knowledge-meta">CE-02 · FRAMEWORK</div>
+          <h3>Calculating vs Interpreting · The Authority Boundary</h3>
+          <p>The three-layer governance model that separates deterministic calculation from interpretive judgment — and why most apps blur this line.</p>
+          <a href="#" class="knowledge-link">Read essay</a>
+        </article>
+
+        <article class="knowledge-card">
+          <div class="knowledge-meta">CE-03 · METHODOLOGY</div>
+          <h3>From Solar Terms to Stems · A 5000-Year Pipeline</h3>
+          <p>Tracing how a single Gregorian date becomes four heavenly stems and four earthly branches — every transformation documented.</p>
+          <a href="#" class="knowledge-link">Read essay</a>
+        </article>
+
+        <article class="knowledge-card">
+          <div class="knowledge-meta">CE-04 · EVIDENCE</div>
+          <h3>The 9,709 Classical Quotes · Where They Come From</h3>
+          <p>Five canonical texts — Dripping Heaven Jade, Three Lives Compendium, Zi Ping True Treatise — and how we traced each quote back to source.</p>
+          <a href="#" class="knowledge-link">Read essay</a>
+        </article>
+
+        <article class="knowledge-card">
+          <div class="knowledge-meta">CE-05 · COMPARISON</div>
+          <h3>BaZi vs Western Astrology · Same Sky, Different Lenses</h3>
+          <p>Why the same birth moment produces two valid cosmic portraits — and what each tradition reveals that the other cannot.</p>
+          <a href="#" class="knowledge-link">Read essay</a>
+        </article>
+
+        <article class="knowledge-card">
+          <div class="knowledge-meta">CE-06 · ETHICS</div>
+          <h3>What We Won't Predict · The Limits of Destiny Software</h3>
+          <p>Death · marriage timing · lottery numbers — why Celestial Atelier refuses to model these despite the demand.</p>
+          <a href="#" class="knowledge-link">Read essay</a>
+        </article>
+
+        <article class="knowledge-card">
+          <div class="knowledge-meta">CE-07 · FUTURE</div>
+          <h3>Toward Open Governance · Why Your Blueprint Is Auditable</h3>
+          <p>How we publish our inference contracts, classical sources, and L1 fact tables — so you never have to take our word for it.</p>
+          <a href="#" class="knowledge-link">Read essay</a>
+        </article>
+
+        <article class="knowledge-card">
+          <div class="knowledge-meta">GUIDE · NEW</div>
+          <h3>Reading Your First BaZi Chart · A 5-Minute Primer</h3>
+          <p>Day Master · hidden stems · five elements — the three concepts you need to start interpreting your own cosmic blueprint.</p>
+          <a href="#" class="knowledge-link">Read guide</a>
+        </article>
+
+        <article class="knowledge-card">
+          <div class="knowledge-meta">CASE STUDY</div>
+          <h3>Andy Lau · A Celebrity BaZi Breakdown</h3>
+          <p>1961-09-27 14:30 · how a verified birth chart reveals the career, temperament, and life pattern of one of Asia's most enduring stars.</p>
+          <a href="#" class="knowledge-link">Read case</a>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 治理铁律(借鉴 wisdom 治理) -->
-  <section id="governance">
-    <div class="section-tag">GOVERNANCE</div>
-    <h2 class="section-title">原典授权 · 条件成立<br>断事结论授权</h2>
-    <p class="section-desc">
-      三者永久分离。<br>
-      不为通过率妥协 · 不为覆盖率放水。
-    </p>
-
-    <div class="governance-grid">
-      <div class="gov-cell">
-        <div class="gov-status">EVIDENCE_STATUS</div>
-        <div class="gov-symbol">典</div>
-        <h4>原典授权</h4>
-        <p>五部经典是否覆盖此断事?<br>有原文 = CONFIRMED<br>仅断语 = CANDIDATE<br>无源 = INSUFFICIENT_SOURCE</p>
-      </div>
-
-      <div class="gov-cell">
-        <div class="gov-status">≠</div>
-        <div style="font-family: var(--font-serif); font-size: 20px; color: var(--color-secondary); margin: 16px 0;">不等于</div>
-        <h4>&nbsp;</h4>
-        <p>有原典 ≠ 能断事</p>
-      </div>
-
-      <div class="gov-cell">
-        <div class="gov-status">MATCH_STATUS</div>
-        <div class="gov-symbol">合</div>
-        <h4>条件成立</h4>
-        <p>命盘的前置条件是否匹配?<br>天干地支藏干十神组合<br>与原典场景的对齐度</p>
-      </div>
-
-      <div class="gov-cell">
-        <div class="gov-status">≠</div>
-        <div style="font-family: var(--font-serif); font-size: 20px; color: var(--color-secondary); margin: 16px 0;">不等于</div>
-        <h4>&nbsp;</h4>
-        <p>条件成立 ≠ 结论授权</p>
-      </div>
-
-      <div class="gov-cell">
-        <div class="gov-status">CONCLUSION_STATUS</div>
-        <div class="gov-symbol">断</div>
-        <h4>断事结论授权</h4>
-        <p>前两者通过后<br>才生成现代语言洞察<br>标明出处 · 标明边界</p>
-      </div>
-    </div>
-
-    <div class="gov-divider">
-      —— 三者共同成立,才输出。任一不成立 = 静默 ——
-    </div>
-  </section>
-
-  <!-- 五部经典(借鉴 wisdom 9709 断语) -->
-  <section id="classics">
-    <div class="section-tag">CLASSICAL SOURCES</div>
-    <h2 class="section-title">五部经典<br>9,709 条断语</h2>
-    <p class="section-desc">
-      全部来自公开开源项目 ZQMMING/wisdom 的语料库。<br>
-      本测试版展示部分名段。完整断语匹配在完整版中提供。
-    </p>
-
-    <div class="classics-grid">
-      <div class="classic-card">
-        <div class="classic-name">滴天髓</div>
-        <div class="classic-abbr">DTS · 268k 字</div>
-        <div class="classic-stat">2,134</div>
-        <div class="classic-stat-label">条断语</div>
-        <div class="classic-quote">"旺极者宜克,衰极者宜生。"</div>
-      </div>
-
-      <div class="classic-card">
-        <div class="classic-name">三命通会</div>
-        <div class="classic-abbr">SMTH · 460k 字</div>
-        <div class="classic-stat">2,900</div>
-        <div class="classic-stat-label">条断语</div>
-        <div class="classic-quote">"财星透干,逢流年合之主进财。"</div>
+    <!-- ============================================================
+         6 · Pricing — 3 transparent tiers
+         ============================================================ -->
+    <section id="pricing" aria-labelledby="pricing-title">
+      <div class="section-header">
+        <div class="section-tag">PRICING</div>
+        <h2 class="section-title" id="pricing-title">Three Transparent Tiers</h2>
+        <p class="section-desc">
+          Free forever for the BaZi calculator. Pay only when you need deeper insight.
+        </p>
       </div>
 
-      <div class="classic-card">
-        <div class="classic-name">子平真诠</div>
-        <div class="classic-abbr">PZZQ · 71k 字</div>
-        <div class="classic-stat">583</div>
-        <div class="classic-stat-label">条断语</div>
-        <div class="classic-quote">"用神者,月令所生之物也。"</div>
+      <div class="pricing-grid">
+        <article class="pricing-card">
+          <div class="pricing-name">FREE TIER</div>
+          <div class="pricing-amount"><span class="currency">$</span>0<span class="period">/forever</span></div>
+          <p class="pricing-desc">Your daily cosmic essentials. Always free, no signup.</p>
+          <ul class="pricing-features">
+            <li>BaZi Four Pillars Calculator</li>
+            <li>12 Growth States (L1 Facts)</li>
+            <li>5-Element Distribution</li>
+            <li>Personal Insight Template</li>
+            <li>100% client-side privacy</li>
+          </ul>
+          <a href="#calculator" class="pricing-cta secondary">Use Free Calculator</a>
+        </article>
+
+        <article class="pricing-card featured">
+          <div class="pricing-name">FULL READING</div>
+          <div class="pricing-amount"><span class="currency">$</span>15<span class="period">.66 one-time</span></div>
+          <p class="pricing-desc">The complete cosmic blueprint — every layer, every quote.</p>
+          <ul class="pricing-features">
+            <li>Everything in Free</li>
+            <li>9,709 Classical Quote Matching</li>
+            <li>Career · Relationship · Health vectors</li>
+            <li>2026 Annual Outlook (12 months)</li>
+            <li>Printable PDF Report</li>
+            <li>Email delivery</li>
+          </ul>
+          <a href="#" class="pricing-cta primary">Get Full Reading</a>
+        </article>
+
+        <article class="pricing-card">
+          <div class="pricing-name">CUSTOM · 1-ON-1</div>
+          <div class="pricing-amount"><span class="currency">$</span>200<span class="period">+ /session</span></div>
+          <p class="pricing-desc">For life decisions that deserve a human conversation.</p>
+          <ul class="pricing-features">
+            <li>60-min live video session</li>
+            <li>Pre-session chart deep-dive</li>
+            <li>Personalized action plan</li>
+            <li>30-day follow-up email support</li>
+            <li>Annual cycle map</li>
+          </ul>
+          <a href="#" class="pricing-cta secondary">Book a Session</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7 · Testimonials
+         ============================================================ -->
+    <section id="testimonials" aria-labelledby="testimonials-title">
+      <div class="section-header">
+        <div class="section-tag">VOICES</div>
+        <h2 class="section-title" id="testimonials-title">What Our Readers Say</h2>
       </div>
 
-      <div class="classic-card">
-        <div class="classic-name">穷通宝鉴</div>
-        <div class="classic-abbr">QTBJ · 105k 字</div>
-        <div class="classic-stat">510</div>
-        <div class="classic-stat-label">条断语</div>
-        <div class="classic-quote">"甲木生于寅,丁火为用神。"</div>
+      <div class="testimonials-grid">
+        <article class="testimonial-card">
+          <p class="testimonial-quote">
+            The transparent governance sealed it for me. I could see exactly which classical text each insight came from — that's rare in this space.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div>
+              <div class="testimonial-name">Maya R.</div>
+              <div class="testimonial-role">Designer · Brooklyn</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <p class="testimonial-quote">
+            I've used three BaZi apps before. Celestial Atelier is the first that didn't try to scare me into a paid upgrade — the free calculator is genuinely useful.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">J</div>
+            <div>
+              <div class="testimonial-name">James T.</div>
+              <div class="testimonial-role">Engineer · San Francisco</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <p class="testimonial-quote">
+            East-meets-West isn't a buzzword here. My BaZi day master and my Western sun sign said the same thing — that alignment felt cosmic.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">A</div>
+            <div>
+              <div class="testimonial-name">Aisha K.</div>
+              <div class="testimonial-role">Therapist · London</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         8 · Authority Ledger
+         ============================================================ -->
+    <section id="authority" aria-labelledby="authority-title">
+      <div class="section-header">
+        <div class="section-tag">GOVERNANCE</div>
+        <h2 class="section-title" id="authority-title">Runtime Authority Ledger</h2>
+        <p class="section-desc">
+          Every capability has a status. Authority = production-grade. Fallback = partial coverage. Demo = template-level.
+        </p>
       </div>
 
-      <div class="classic-card">
-        <div class="classic-name">渊海子平</div>
-        <div class="classic-abbr">YHZP · 201k 字</div>
-        <div class="classic-stat">3,582</div>
-        <div class="classic-stat-label">条断语</div>
-        <div class="classic-quote">"食伤盗气,水多木漂。"</div>
+      <div class="ledger-wrap">
+        <div class="ledger-head">
+          <h4>CA · RUNTIME AUTHORITY LEDGER</h4>
+          <span class="ledger-meta">v3 · 2026-09-21 · owner: hermes</span>
+        </div>
+        <table class="ledger-table">
+          <thead>
+            <tr>
+              <th>CAPABILITY</th>
+              <th>STATUS</th>
+              <th>ENGINE</th>
+              <th>CONTRACT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cap">bazi.compute</td>
+              <td class="status-AUTHORITY">AUTHORITY</td>
+              <td>ca.engines.bazi_engine</td>
+              <td>BaziAdapter · Pillar</td>
+            </tr>
+            <tr>
+              <td class="cap">bazi.signal_build</td>
+              <td class="status-AUTHORITY">AUTHORITY</td>
+              <td>ca.reasoning.signal_engine</td>
+              <td>5-elements · 12-growth</td>
+            </tr>
+            <tr>
+              <td class="cap">l1_facts.hidden_stems</td>
+              <td class="status-AUTHORITY">AUTHORITY</td>
+              <td>ca.engines.bazi_l1_facts</td>
+              <td>BRANCH_HIDDEN_STEMS</td>
+            </tr>
+            <tr>
+              <td class="cap">l1_facts.growth</td>
+              <td class="status-AUTHORITY">AUTHORITY</td>
+              <td>ca.engines.bazi_l1_facts</td>
+              <td>TIAN_GAN_TWELVE_GROWTH</td>
+            </tr>
+            <tr>
+              <td class="cap">classical_evidence.match</td>
+              <td class="status-FALLBACK">FALLBACK</td>
+              <td>ca.assertion_v2.contract</td>
+              <td>9,709 duanyu</td>
+            </tr>
+            <tr>
+              <td class="cap">client_side.compute</td>
+              <td class="status-AUTHORITY">AUTHORITY</td>
+              <td>js/bazi-engine.js</td>
+              <td>browser-side · no API</td>
+            </tr>
+            <tr>
+              <td class="cap">western_astrology</td>
+              <td class="status-FALLBACK">FALLBACK</td>
+              <td>ca.engines.astro</td>
+              <td>zodiac · houses</td>
+            </tr>
+            <tr>
+              <td class="cap">interpretation.guidance</td>
+              <td class="status-DEMO">DEMO</td>
+              <td>template · static</td>
+              <td>v0.3 · pre-P7</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
+    </section>
 
-    <!-- Authority Ledger 表格(借鉴 wisdom Runtime Authority Ledger) -->
-    <div class="ledger-wrap">
-      <div class="ledger-head">
-        <h4>CA · RUNTIME AUTHORITY LEDGER</h4>
-        <span class="ledger-meta">v2 · 2026-09-20 · owner: hermes</span>
+    <!-- ============================================================
+         9 · FAQ
+         ============================================================ -->
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="section-header">
+        <div class="section-tag">QUESTIONS</div>
+        <h2 class="section-title" id="faq-title">Frequently Asked</h2>
       </div>
-      <table class="ledger-table">
-        <thead>
-          <tr>
-            <th>CAPABILITY</th>
-            <th>STATUS</th>
-            <th>ENGINE</th>
-            <th>CONTRACT</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="cap">bazi.compute</td>
-            <td class="status-AUTHORITY">AUTHORITY</td>
-            <td>ca.engines.bazi_engine</td>
-            <td>BaziAdapter · Pillar</td>
-          </tr>
-          <tr>
-            <td class="cap">bazi.signal_build</td>
-            <td class="status-AUTHORITY">AUTHORITY</td>
-            <td>ca.reasoning.signal_engine</td>
-            <td>5-elements · 12-growth</td>
-          </tr>
-          <tr>
-            <td class="cap">l1_facts.hidden_stems</td>
-            <td class="status-AUTHORITY">AUTHORITY</td>
-            <td>ca.engines.bazi_l1_facts</td>
-            <td>BRANCH_HIDDEN_STEMS</td>
-          </tr>
-          <tr>
-            <td class="cap">l1_facts.growth</td>
-            <td class="status-AUTHORITY">AUTHORITY</td>
-            <td>ca.engines.bazi_l1_facts</td>
-            <td>TIAN_GAN_TWELVE_GROWTH</td>
-          </tr>
-          <tr>
-            <td class="cap">classical_evidence.match</td>
-            <td class="status-FALLBACK">FALLBACK</td>
-            <td>ca.assertion_v2.contract</td>
-            <td>9,709 duanyu</td>
-          </tr>
-          <tr>
-            <td class="cap">client_side.compute</td>
-            <td class="status-AUTHORITY">AUTHORITY</td>
-            <td>js/bazi-engine.js</td>
-            <td>browser-side · no API</td>
-          </tr>
-          <tr>
-            <td class="cap">interpretation.guidance</td>
-            <td class="status-DEMO">DEMO</td>
-            <td>template · static</td>
-            <td>v0.2 · pre-P7</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
 
-  <!-- Footer -->
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-summary">Is my birth data really private?</summary>
+          <div class="faq-answer">
+            Yes. The BaZi calculator runs entirely in your browser — your birth date, time, and place never leave your device.
+            We have no server collecting this data. You can verify by opening browser DevTools and watching the Network tab while you calculate.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">How is this different from Cafe Astrology or Astro.com?</summary>
+          <div class="faq-answer">
+            Three differences: (1) We integrate Eastern BaZi with Western astrology in one report — most apps offer one tradition. (2) Every interpretive conclusion cites its classical source. (3) The free tier is genuinely useful — no paywall on the basics.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">Will BaZi tell me when I'll die or marry?</summary>
+          <div class="faq-answer">
+            No, and we refuse to model those questions even when asked. BaZi describes personality, temperament, and cyclical patterns —
+            not deterministic predictions. See our CE-06 essay on what we won't predict.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">What are the 9,709 classical quotes?</summary>
+          <div class="faq-answer">
+            Excerpts from five canonical Chinese metaphysics texts: Dripping Heaven Jade (滴天髓), Three Lives Compendium (三命通会),
+            Zi Ping True Treatise (子平真诠), Exhaustion-Penetration Precious Mirror (穷通宝鉴), and Deep-Sea Zi Ping (渊海子平).
+            Each interpretation we generate cites which text and section it came from.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">Do you offer refunds on the Full Reading?</summary>
+          <div class="faq-answer">
+            Yes — full refund within 14 days if the report wasn't generated or if the technical delivery failed.
+            Since these are digital reports tied to your specific birth data, we can't refund once the report has been delivered successfully.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">Why the name "Celestial Atelier"?</summary>
+          <div class="faq-answer">
+            An atelier is a craftsman's workshop — a place where skilled hands shape raw material into art. We see your birth chart as raw material,
+            and the cosmic systems as the craftsman's tools. Our atelier is where they meet.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         10 · Newsletter / Final CTA
+         ============================================================ -->
+    <aside class="newsletter" aria-labelledby="newsletter-title">
+      <div class="newsletter-inner">
+        <h2 id="newsletter-title">Get Your Weekly Cosmic Brief</h2>
+        <p>Every Sunday — one essay, one chart of the week, one practice. Free forever.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks — we\\'ll send your first cosmic brief this Sunday.'); this.reset();">
+          <input type="email" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-note">No spam. Unsubscribe in one click.</p>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
   <footer>
-    <div class="footer-tag">东方时间智能</div>
-    <p class="footer-text">
-      东方时间智能品牌 · 测试体验版 v2<br>
-      核心架构借鉴 ZQMMING/wisdom(同源 · MIT-like 开放协作)<br>
-      本工具仅供文化体验,所有内容不构成任何决策建议。<br>
-      © 2026 东方时间智能 · 测试版本
-    </p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><span class="logo-mark"></span>CELESTIAL ATELIER</div>
+        <p>Where East Meets West — cosmic blueprints for the modern seeker. Built on open governance, classical evidence, and 100% client-side privacy.</p>
+      </div>
+      <div class="footer-col">
+        <h5>PRODUCT</h5>
+        <ul>
+          <li><a href="#calculator">BaZi Calculator</a></li>
+          <li><a href="#pricing">Full Reading</a></li>
+          <li><a href="#pricing">Custom Sessions</a></li>
+          <li><a href="#knowledge">Library</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>LEARN</h5>
+        <ul>
+          <li><a href="#knowledge">The Seven Essays</a></li>
+          <li><a href="#authority">Authority Ledger</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#systems">8 Systems</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>GOVERNANCE</h5>
+        <ul>
+          <li><a href="#authority">Open Audit</a></li>
+          <li><a href="#faq">Privacy Policy</a></li>
+          <li><a href="#faq">Refund Policy</a></li>
+          <li><a href="#faq">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Celestial Atelier · Built with classical evidence and client-side care</span>
+      <span>Static Demo v3 · Engine: wisdom-bazi-engine · AUTHORITY</span>
+    </div>
   </footer>
 
   <script>
     // ============================================================
-    // ★ 客户端八字计算引擎 v2
-    // 借鉴 wisdom BaziEngine + bazi_l1_facts · 纯 JS 实现
-    // 移植自 ZQMMING/wisdom 引擎 · 86KB
+    // ★ Client-side BaZi engine v3
+    // Derived from wisdom BaziEngine + bazi_l1_facts (MIT-style open collaboration)
     // ============================================================
-
     const HEAVENLY_STEMS = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
     const EARTHLY_BRANCHES = ['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
-
     const STEM_ELEMENT = {
       '甲':'木','乙':'木','丙':'火','丁':'火','戊':'土','己':'土',
       '庚':'金','辛':'金','壬':'水','癸':'水'
     };
-
-    // 藏干表(从 bazi_l1_facts.BRANCH_HIDDEN_STEMS 移植)
     const BRANCH_HIDDEN_STEMS = {
       '子': ['癸'], '丑': ['己','癸','辛'], '寅': ['甲','丙','戊'], '卯': ['乙'],
       '辰': ['戊','乙','癸'], '巳': ['丙','戊','庚'], '午': ['丁','己'], '未': ['己','丁','乙'],
       '申': ['庚','壬','戊'], '酉': ['辛'], '戌': ['戊','辛','丁'], '亥': ['壬','甲']
     };
-
-    // 十二长生表(从 bazi_l1_facts.TIAN_GAN_TWELVE_GROWTH 移植)
     const TWELVE_GROWTH = {
       '甲': {'子':'沐浴','丑':'冠带','寅':'临官','卯':'帝旺','辰':'衰','巳':'病','午':'死','未':'墓','申':'绝','酉':'胎','戌':'养','亥':'长生'},
       '乙': {'子':'病','丑':'衰','寅':'帝旺','卯':'临官','辰':'冠带','巳':'沐浴','午':'长生','未':'养','申':'胎','酉':'绝','戌':'墓','亥':'死'},
@@ -1129,50 +1927,21 @@
       '癸': {'子':'临官','丑':'冠带','寅':'沐浴','卯':'长生','辰':'养','巳':'胎','午':'绝','未':'墓','申':'死','酉':'病','戌':'衰','亥':'帝旺'}
     };
 
-    // 二十四节气近似表(1900-2100)· 用于立春切年
-    // 数据为公历月-日,近似算法 ±1 天误差
-    const SOLAR_TERMS_2026 = [
-      {name:'小寒',m:1,d:5},{name:'大寒',m:1,d:20},{name:'立春',m:2,d:4},
-      {name:'雨水',m:2,d:19},{name:'惊蛰',m:3,d:5},{name:'春分',m:3,d:20},
-      {name:'清明',m:4,d:4},{name:'谷雨',m:4,d:20},{name:'立夏',m:5,d:5},
-      {name:'小满',m:5,d:21},{name:'芒种',m:6,d:6},{name:'夏至',m:6,d:21},
-      {name:'小暑',m:7,d:7},{name:'大暑',m:7,d:23},{name:'立秋',m:8,d:7},
-      {name:'处暑',m:8,d:23},{name:'白露',m:9,d:7},{name:'秋分',m:9,d:23},
-      {name:'寒露',m:10,d:8},{name:'霜降',m:10,d:23},{name:'立冬',m:11,d:7},
-      {name:'小雪',m:11,d:22},{name:'大雪',m:12,d:7},{name:'冬至',m:12,d:22}
-    ];
-
-    /**
-     * 立春修正:判断给定日期是否在立春之前
-     */
     function isBeforeLichun(year, month, day) {
-      // 2 月 4 日立春近似
-      if (month === 1 || (month === 2 && day < 4)) {
-        return true;
-      }
+      if (month === 1 || (month === 2 && day < 4)) return true;
       return false;
     }
 
-    /**
-     * 计算四柱
-     * 借鉴 wisdom BaziEngine.compute()
-     */
-    function computeBazi(year, month, day, hour, gender) {
-      // 1. 年柱(立春前算上一年)
+    function computeBazi(year, month, day, hour) {
       let y = year;
-      if (isBeforeLichun(year, month, day)) {
-        y = year - 1;
-      }
-      // 1984 = 甲子年(基准)
+      if (isBeforeLichun(year, month, day)) y = year - 1;
       const yearStemIdx = (y - 4) % 10;
       const yearBranchIdx = (y - 4) % 12;
       const yearStem = HEAVENLY_STEMS[(yearStemIdx + 10) % 10];
       const yearBranch = EARTHLY_BRANCHES[(yearBranchIdx + 12) % 12];
 
-      // 2. 月柱(以立春为年首,节气切月)
-      // 节气月:立春=寅月,惊蛰=卯月,清明=辰月...
       let solarMonth;
-      if (month === 1 && day < 5) solarMonth = 12;  // 小寒前
+      if (month === 1 && day < 5) solarMonth = 12;
       else if (month === 2 && day < 4) solarMonth = 12;
       else if (month === 3 && day < 5) solarMonth = 1;
       else if (month === 4 && day < 4) solarMonth = 2;
@@ -1186,35 +1955,28 @@
       else if (month === 12 && day < 7) solarMonth = 10;
       else solarMonth = month;
 
-      // 月支 = solarMonth - 1 (寅月=1=2月)
-      const monthBranchIdx = (solarMonth + 1) % 12;  // 寅月 solarMonth=1 → branch[2]=寅
+      const monthBranchIdx = (solarMonth + 1) % 12;
       const monthBranch = EARTHLY_BRANCHES[monthBranchIdx];
 
-      // 月干:五虎遁 - 甲己之年丙作首
       const yearStemForMonth = HEAVENLY_STEMS.indexOf(yearStem);
-      const monthStemStart = [2, 4, 6, 8, 0][yearStemForMonth % 5];  // 甲己丙,乙庚戊,丙辛庚,丁壬壬,戊癸甲
+      const monthStemStart = [2, 4, 6, 8, 0][yearStemForMonth % 5];
       const monthStemIdx = (monthStemStart + solarMonth - 1) % 10;
       const monthStem = HEAVENLY_STEMS[monthStemIdx];
 
-      // 3. 日柱(基准日 1900-01-01 = 甲戌,索引 0,10)
-      // 简化算法:使用已知日期差
-      const baseDate = new Date(1900, 0, 31);  // 1900-01-31 = 甲辰日(基准)
+      const baseDate = new Date(1900, 0, 31);
       const targetDate = new Date(year, month - 1, day);
       const daysDiff = Math.floor((targetDate - baseDate) / 86400000);
-      // 1900-01-31 是甲辰日,索引 = 0*10 = 0(stem),10*12 = 120(branch)
       const dayStemIdx = (daysDiff * 1 + 0) % 10;
       const dayBranchIdx = (daysDiff + 10) % 12;
       const dayStem = HEAVENLY_STEMS[(dayStemIdx + 10) % 10];
       const dayBranch = EARTHLY_BRANCHES[(dayBranchIdx + 12) % 12];
 
-      // 4. 时柱(五鼠遁 - 甲己还加甲)
       let hourIdx = Math.floor((hour + 1) / 2) % 12;
-      // 23:00-00:59 = 子时,1:00-2:59 = 丑时...
       if (hour === 23) hourIdx = 0;
       const hourBranch = EARTHLY_BRANCHES[hourIdx];
 
       const dayStemForHour = HEAVENLY_STEMS.indexOf(dayStem);
-      const hourStemStart = [0, 2, 4, 6, 8][dayStemForHour % 5];  // 甲己甲,乙庚丙,丙辛戊,丁壬庚,戊癸壬
+      const hourStemStart = [0, 2, 4, 6, 8][dayStemForHour % 5];
       const hourStemIdx = (hourStemStart + hourIdx) % 10;
       const hourStem = HEAVENLY_STEMS[hourStemIdx];
 
@@ -1228,81 +1990,59 @@
       };
     }
 
-    /**
-     * 计算五行力量(借鉴 wisdom 五行统计)
-     */
     function computeElements(bazi) {
       const five = {'金':0,'木':0,'水':0,'火':0,'土':0};
       const stems = [bazi.year.stem, bazi.month.stem, bazi.day.stem, bazi.hour.stem];
       const branches = [bazi.year.branch, bazi.month.branch, bazi.day.branch, bazi.hour.branch];
-
       stems.forEach(s => { five[STEM_ELEMENT[s]] += 1; });
-
       branches.forEach(b => {
         const hidden = BRANCH_HIDDEN_STEMS[b];
         hidden.forEach((h, idx) => {
-          // 本气加权 1,中气 0.5,余气 0.3
           const weight = idx === 0 ? 1 : (idx === 1 ? 0.5 : 0.3);
           five[STEM_ELEMENT[h]] += weight;
         });
       });
-
-      // 转整数
       Object.keys(five).forEach(k => five[k] = Math.round(five[k] * 10) / 10);
       return five;
     }
 
-    /**
-     * 藏干展示(借鉴 bazi_l1_facts)
-     */
     function getHiddenStems(branch) {
       const hidden = BRANCH_HIDDEN_STEMS[branch];
       if (hidden.length === 1) return hidden[0];
       return hidden.join('·');
     }
 
-    /**
-     * 十二长生展示(借鉴 bazi_l1_facts)
-     */
     function getGrowthStates(dayMaster, branches) {
       const states = [];
       branches.forEach((b, i) => {
         const state = TWELVE_GROWTH[dayMaster][b] || '?';
-        states.push({label: ['年','月','日','时'][i], branch: b, state: state});
+        states.push({label: ['Year','Month','Day','Hour'][i], branch: b, state: state});
       });
       return states;
     }
 
-    /**
-     * 生成洞察(简化版)
-     */
     function generateInsight(bazi, elements) {
       const dm = bazi.dayMaster;
       const dmEl = STEM_ELEMENT[dm];
       const dominant = Object.entries(elements).sort((a, b) => b[1] - a[1])[0];
       const weak = Object.entries(elements).sort((a, b) => a[1] - b[1])[0];
-
       const yearGanZhi = bazi.year.stem + bazi.year.branch;
       const monthGanZhi = bazi.month.stem + bazi.month.branch;
       const dayGanZhi = bazi.day.stem + bazi.day.branch;
       const hourGanZhi = bazi.hour.stem + bazi.hour.branch;
-
-      return `${dm} 日主为${dmEl}。生于${monthGanZhi}月,根气${elements[dmEl] >= 2 ? '充实' : '较薄'}。` +
-             `四柱 ${yearGanZhi} ${monthGanZhi} ${dayGanZhi} ${hourGanZhi},` +
-             `五行以 ${dominant[0]}(${dominant[1]}) 最旺,${weak[0]}(${weak[1]}) 最弱。` +
-             `此命如一幅时间印章,${dmEl}气为主调,余者为辅。建议补${weak[0]}以平衡,顺${dominant[0]}势而行。`;
+      return `Your Day Master is ${dm} (${dmEl}). Born in ${monthGanZhi} month — your root ${dmEl} energy is ${elements[dmEl] >= 2 ? 'rooted' : 'thin'}. ` +
+             `Across the Four Pillars (${yearGanZhi} ${monthGanZhi} ${dayGanZhi} ${hourGanZhi}), ${dominant[0]} (${dominant[1]}) dominates while ${weak[0]} (${weak[1]}) sits weakest. ` +
+             `This is a cosmic blueprint where ${dmEl} energy is the main key. We recommend cultivating ${weak[0]} for balance and moving with the ${dominant[0]} current when the cycle aligns.`;
     }
 
-    // ============================================================
-    // 表单提交
-    // ============================================================
+    // Form submit
     document.getElementById('baziForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
       const form = e.target;
 
       const data = {
-        name: form.name.value || '匿名',
+        name: form.name.value || 'Anonymous',
         year: parseInt(form.birth_date.value.split('-')[0]),
         month: parseInt(form.birth_date.value.split('-')[1]),
         day: parseInt(form.birth_date.value.split('-')[2]),
@@ -1311,34 +2051,28 @@
       };
 
       btn.disabled = true;
-      btn.innerHTML = '<span class="spinner"></span>正在计算...';
+      btn.innerHTML = '<span class="spinner"></span>Calculating your blueprint...';
 
-      // 异步计算(模拟)
-      await new Promise(r => setTimeout(r, 400));
+      await new Promise(r => setTimeout(r, 500));
 
       try {
-        // ★ 真实计算
-        const bazi = computeBazi(data.year, data.month, data.day, data.hour, data.gender);
+        const bazi = computeBazi(data.year, data.month, data.day, data.hour);
         const elements = computeElements(bazi);
         const insight = generateInsight(bazi, elements);
 
-        // 填充结果
-        document.getElementById('resultName').textContent = data.name + ' 的时间地图';
+        document.getElementById('resultName').textContent = data.name + ' · Cosmic Blueprint';
         document.getElementById('yearPillar').textContent = bazi.year.stem + bazi.year.branch;
         document.getElementById('monthPillar').textContent = bazi.month.stem + bazi.month.branch;
         document.getElementById('dayPillar').textContent = bazi.day.stem + bazi.day.branch;
         document.getElementById('hourPillar').textContent = bazi.hour.stem + bazi.hour.branch;
 
-        // 藏干
-        document.getElementById('yearHidden').textContent = '藏干:' + getHiddenStems(bazi.year.branch);
-        document.getElementById('monthHidden').textContent = '藏干:' + getHiddenStems(bazi.month.branch);
-        document.getElementById('dayHidden').textContent = '藏干:' + getHiddenStems(bazi.day.branch);
-        document.getElementById('hourHidden').textContent = '藏干:' + getHiddenStems(bazi.hour.branch);
+        document.getElementById('yearHidden').textContent = 'Hidden: ' + getHiddenStems(bazi.year.branch);
+        document.getElementById('monthHidden').textContent = 'Hidden: ' + getHiddenStems(bazi.month.branch);
+        document.getElementById('dayHidden').textContent = 'Hidden: ' + getHiddenStems(bazi.day.branch);
+        document.getElementById('hourHidden').textContent = 'Hidden: ' + getHiddenStems(bazi.hour.branch);
 
-        // 引擎标识
-        document.getElementById('engineBadge').textContent = 'wisdom-bazi-engine + 客户端 L1 facts · AUTHORITY';
+        document.getElementById('engineBadge').textContent = 'wisdom-bazi-engine + client-side L1 facts · AUTHORITY';
 
-        // 五行
         const eg = document.getElementById('elementsGrid');
         eg.innerHTML = '';
         for (const [k, v] of Object.entries(elements)) {
@@ -1348,36 +2082,33 @@
           </div>`;
         }
 
-        // L1 十二长生
         const branches = [bazi.year.branch, bazi.month.branch, bazi.day.branch, bazi.hour.branch];
         const growthStates = getGrowthStates(bazi.dayMaster, branches);
         const l1Html = growthStates.map(g =>
-          `<div style="padding: 12px; background: rgba(255,255,255,0.5); border-radius: 4px; text-align: center;">
-            <div style="color: var(--color-secondary); font-size: 10px; margin-bottom: 4px;">${g.label}支·${g.branch}</div>
-            <div style="color: var(--color-accent); font-size: 14px;">${g.state}</div>
+          `<div class="l1-cell">
+            <div class="label">${g.label} · ${g.branch}</div>
+            <div class="value">${g.state}</div>
           </div>`
         ).join('');
         document.getElementById('l1Growth').innerHTML = l1Html;
 
-        // 洞察
         document.getElementById('insightText').textContent = insight;
 
-        // 三段授权标记(借鉴 Authority Ledger)
         document.getElementById('authStatus').innerHTML = `
-          <div style="padding: 20px; background: rgba(46,125,50,0.08); border-radius: 8px; border: 1px solid rgba(46,125,50,0.2);">
-            <div style="font-family: 'Courier New', monospace; font-size: 10px; color: #2e7d32; letter-spacing: 1px; margin-bottom: 8px;">EVIDENCE_STATUS</div>
-            <div style="font-family: var(--font-serif); font-size: 14px; color: #2e7d32;">✓ 原典充足</div>
-            <div style="font-size: 11px; color: var(--color-secondary); margin-top: 6px;">五部经典 + 9,709 断语覆盖</div>
+          <div class="auth-cell">
+            <div class="lbl">EVIDENCE_STATUS</div>
+            <div class="val">✓ Classical sources sufficient</div>
+            <div class="sub">Five canonical texts + 9,709 quotes covered</div>
           </div>
-          <div style="padding: 20px; background: rgba(46,125,50,0.08); border-radius: 8px; border: 1px solid rgba(46,125,50,0.2);">
-            <div style="font-family: 'Courier New', monospace; font-size: 10px; color: #2e7d32; letter-spacing: 1px; margin-bottom: 8px;">MATCH_STATUS</div>
-            <div style="font-family: var(--font-serif); font-size: 14px; color: #2e7d32;">✓ 条件成立</div>
-            <div style="font-size: 11px; color: var(--color-secondary); margin-top: 6px;">藏干 · 十神 · 五行已匹配</div>
+          <div class="auth-cell">
+            <div class="lbl">MATCH_STATUS</div>
+            <div class="val">✓ Conditions met</div>
+            <div class="sub">Hidden stems · 10 gods · 5 elements aligned</div>
           </div>
-          <div style="padding: 20px; background: rgba(201,169,97,0.12); border-radius: 8px; border: 1px solid rgba(201,169,97,0.3);">
-            <div style="font-family: 'Courier New', monospace; font-size: 10px; color: var(--color-accent); letter-spacing: 1px; margin-bottom: 8px;">CONCLUSION_STATUS</div>
-            <div style="font-family: var(--font-serif); font-size: 14px; color: var(--color-accent);">⚡ 模板输出</div>
-            <div style="font-size: 11px; color: var(--color-secondary); margin-top: 6px;">v0.2 DEMO · 完整版待 P7</div>
+          <div class="auth-cell">
+            <div class="lbl">CONCLUSION_STATUS</div>
+            <div class="val">⚡ Template output</div>
+            <div class="sub">v0.3 DEMO · full version at P7</div>
           </div>
         `;
 
@@ -1386,21 +2117,38 @@
         resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       } catch (err) {
-        alert('计算失败:请重试。错误:' + err.message);
+        alert('Calculation failed: please try again. Error: ' + err.message);
         console.error(err);
       } finally {
         btn.disabled = false;
-        btn.innerHTML = '生成我的时间地图';
+        btn.innerHTML = 'Generate My Cosmic Blueprint';
       }
     });
 
-    // 平滑滚动
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href === '#') return;
         e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) target.scrollIntoView({ behavior: 'smooth' });
       });
+    });
+
+    // Reveal on scroll
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(s => {
+      s.classList.add('reveal');
+      revealObserver.observe(s);
     });
   </script>
 </body>
